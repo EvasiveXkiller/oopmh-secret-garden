@@ -1,3 +1,8 @@
+package secretGarden;
+
+import secretGarden.enums.membership;
+import secretGarden.enums.order;
+
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -29,9 +34,7 @@ public class orders {
     }
 
     private void calculateMembershipFeatures(boolean preorder) {
-        if (preorder) {
-            owner.setMemberStatus("maybe");
-        }
+        if (preorder) owner.setMembershipEligibility(true);
     }
 
     public String getUUID() {

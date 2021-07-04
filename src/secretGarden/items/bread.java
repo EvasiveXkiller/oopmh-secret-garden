@@ -1,9 +1,11 @@
+package secretGarden.items;
+
 public class bread {
     private String name;
     private double price;
     private int stock;
 
-    bread(String name, double price, int stock) {
+    public bread(String name, double price, int stock) {
         this.name = name;
         this.price = price;
         this.stock = stock;

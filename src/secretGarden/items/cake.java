@@ -1,3 +1,5 @@
+package secretGarden.items;
+
 public class cake {
     private String name;
     private double price;
