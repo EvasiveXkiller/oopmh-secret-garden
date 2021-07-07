@@ -53,6 +53,7 @@ public class mainrunnable {
         secretGarden mainInterface = new secretGarden();
         Scanner secretScanner = new Scanner(System.in);
         System.out.println("Welcome to Secret Garden automated ordering system.");
+        // typing a certain phone number will cause to program to exit, will use that as an exit system
         System.out.println("Please enter your phone number.");
         String phoneNum = secretScanner.nextLine();
         //checkCustomerID
@@ -62,16 +63,17 @@ public class mainrunnable {
         System.out.println("Please choose one of the following:");
         System.out.println("1. Place order");
         System.out.println("2. Get status of your order");
-        System.out.println("3. Exit program");
+        // added this new line
+        System.out.println("3. Logout");
         int choice1 = secretScanner.nextInt();
-        
+
         if (choice1 == 1) {
             System.out.println("What type of order would you like to place?");
             System.out.println("1. Standard");
             System.out.println("2. Pre-Order");
             int choice2 = secretScanner.nextInt();
-            
-                if (choice2 == 1) {
+
+            if (choice2 == 1) {
                     /*
                     getallitems -> customer will choose one and add it to cart
                     put loop and a exit method here for the customer to put more than one item to cart
@@ -79,8 +81,7 @@ public class mainrunnable {
                     return orderID and price upon successful order
                     exit program
                     */
-                }
-                else if (choice2 == 2) {
+            } else if (choice2 == 2) {
                     /*
                     getcake and fill in secretGarden.items.cake styles and data
                     put loop and a exit method here for the customer to put more than one item to cart
@@ -88,29 +89,26 @@ public class mainrunnable {
                     return orderID and price upon successful order
                     exit program
                     */
-                }
-                else {
-                    System.out.println("Do you not know how numbers work?");
-                    //figure out loop on wrong input at a later time
-                }  
-        }
-        else if (choice1 == 2) {
+            } else {
+                System.out.println("Do you not know how numbers work?");
+                //figure out loop on wrong input at a later time
+            }
+        } else if (choice1 == 2) {
 
             /*
             if there are orders under customer -> getOrderStatus() under the customerID
             if there are no orders under customer -> "there are currently no active orders"
             loops back to choice 1
             */
-            
-        }
-        else if (choice1 == 3) {
+
+        } else if (choice1 == 3) {
             System.out.println("Thank you for shopping at Secret Garden!");
             //exit program
-        }
-        else {
+        } else {
             System.out.println("Do you not know how numbers work?");
             //figure out loop on wrong input at a later time
         }
         secretScanner.close();
+        System.exit(0);
     }
 }
