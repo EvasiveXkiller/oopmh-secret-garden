@@ -5,16 +5,34 @@ import secretGarden.enums.order;
 
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class orders {
+
+
     private customer owner;
     private String uid;
     private order orderType;
     private String collectionDate;
-    private Object items;
+    private ArrayList items;
 
-    orders(customer owner, order orderType, String collectionDate, Object items) {
+
+    public customer getOwner() {
+        return owner;
+    }
+
+    public void setOwner(customer owner) {
+        this.owner = owner;
+    }
+    /**
+     * Pre Order
+     * @param owner
+     * @param orderType
+     * @param collectionDate
+     * @param items
+     */
+    orders(customer owner, order orderType, String collectionDate, ArrayList items) {
         this.owner = owner;
         this.uid = UUID.randomUUID().toString();
         this.orderType = orderType;
@@ -23,10 +41,17 @@ public class orders {
         this.calculateMembershipFeatures(true);
     }
 
-    orders(order orderType, Object items) {
+    /**
+     * Standard Order
+     * @param customer
+     * @param orderType
+     * @param items
+     */
+    orders(customer customer, order orderType, ArrayList items) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         this.uid = UUID.randomUUID().toString();
+        this.owner = customer;
         this.orderType = orderType;
         this.collectionDate = dtf.format(now);
         this.items = items;

@@ -1,13 +1,11 @@
 package secretGarden.database;
 
 import secretGarden.customer;
-import secretGarden.enums.order;
 import secretGarden.interfaces.databaseInterface;
 import secretGarden.items.bread;
 import secretGarden.orders;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * Class that acts as a pseudoDatabase;
@@ -27,6 +25,7 @@ public class pseudoDatabase implements databaseInterface {
      * @param orders The order to add to the list
      */
     public static void addOrder(orders orders) {
+        allOrders.add(orders);
     }
 
     /**
@@ -35,8 +34,8 @@ public class pseudoDatabase implements databaseInterface {
      * @param uid The id of the order
      * @return The order if its found, else null
      */
-    static orders getOrder(String uid) {
-        return null;
+    public static ArrayList<orders> getAllOrders() {
+        return allOrders;
     }
 
     /**
@@ -44,20 +43,18 @@ public class pseudoDatabase implements databaseInterface {
      *
      * @param customer The customer object
      */
-    static void addCustomer(customer customer) {
-
+    public static void addCustomer(customer customer) {
+        allCustomers.add(customer);
     }
 
     /**
      * Gets the specified customer object from the database
      *
-     * @param uid The id of the customer [in this case phone number]
      * @return the customer details;
      */
-    static customer getCustomer(String uid) {
-        return null;
+    public static ArrayList<customer> getAllCustomer() {
+        return allCustomers;
     }
-
 
     // Getters and Setters
     public static ArrayList<bread> getAllBreads() {
@@ -67,20 +64,21 @@ public class pseudoDatabase implements databaseInterface {
     public static void setAllBreads(ArrayList<bread> allBreads) {
         pseudoDatabase.allBreads = allBreads;
     }
-    
+
     public static ArrayList<customer> getAllRows(String TableName) {
-    	
-    	ArrayList<customer> array = new ArrayList<customer>();
-    	
-    	for (Result result : results) {  
-            for (KeyValue rowKV : result.raw()) {  
-                ("Table Name:" + TableName + " ");  
-                ("Column Family Name:" + new String(rowKV.getFamily()) + " ");  
-                ("Line Name:" + new String(rowKV.getRow()) + " ");  
-                ("Timestamp:" + rowKV.getTimestamp() + " ");  
-                ("Column Name:" + new String(rowKV.getQualifier()) + " ");  
-                ("value:" + new String(rowKV.getValue()));  
-            }  
-    	}
+
+        ArrayList<customer> array = new ArrayList<customer>();
+
+        for (Result result : results) {
+            for (KeyValue rowKV : result.raw()) {
+                ("Table Name:" + TableName + " ");
+                ("Column Family Name:" + new String(rowKV.getFamily()) + " ");
+                ("Line Name:" + new String(rowKV.getRow()) + " ");
+                ("Timestamp:" + rowKV.getTimestamp() + " ");
+                ("Column Name:" + new String(rowKV.getQualifier()) + " ");
+                ("value:" + new String(rowKV.getValue()));
+            }
+        }
+        return null;
     }
 }

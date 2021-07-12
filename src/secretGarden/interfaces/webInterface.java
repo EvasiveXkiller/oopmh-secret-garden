@@ -6,6 +6,6 @@ import secretGarden.enums.order;
 import java.util.ArrayList;
 
 public interface webInterface {
-    ArrayList<bread> getAllItems();
+    ArrayList<bread> getAllStandardItems();
     String placeOrders(order type, String collectionDate, ArrayList<Object> items);
 }
