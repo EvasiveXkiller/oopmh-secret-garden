@@ -7,6 +7,7 @@ import secretGarden.items.bread;
 import secretGarden.orders;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Class that acts as a pseudoDatabase;
@@ -66,5 +67,20 @@ public class pseudoDatabase implements databaseInterface {
     public static void setAllBreads(ArrayList<bread> allBreads) {
         pseudoDatabase.allBreads = allBreads;
     }
-
+    
+    public static ArrayList<customer> getAllRows(String TableName) {
+    	
+    	ArrayList<customer> array = new ArrayList<customer>();
+    	
+    	for (Result result : results) {  
+            for (KeyValue rowKV : result.raw()) {  
+                ("Table Name:" + TableName + " ");  
+                ("Column Family Name:" + new String(rowKV.getFamily()) + " ");  
+                ("Line Name:" + new String(rowKV.getRow()) + " ");  
+                ("Timestamp:" + rowKV.getTimestamp() + " ");  
+                ("Column Name:" + new String(rowKV.getQualifier()) + " ");  
+                ("value:" + new String(rowKV.getValue()));  
+            }  
+    	}
+    }
 }
