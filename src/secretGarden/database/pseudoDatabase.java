@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class pseudoDatabase implements databaseInterface {
     // pseudo database
     private static ArrayList<bread> allBreads = new ArrayList<bread>();
+    private static ArrayList<cake> allCakes = new ArrayList<cake>();
     private static ArrayList<orders> allOrders = new ArrayList<orders>();
     private static ArrayList<customer> allCustomers = new ArrayList<customer>();
     // end of pseudo database
@@ -65,6 +66,20 @@ public class pseudoDatabase implements databaseInterface {
         pseudoDatabase.allBreads = allBreads;
     }
 
+    public static ArrayList<cake> getAllCakes() {
+        return allCakes;
+    }
+
+    public static void setAllCakes(ArrayList<cake> allCakes) {
+        pseudoDatabase.allCakes = allCakes;
+    }
+
+    public static ArrayList<cake> getAllAddons(){
+        return allAddons;
+    }
+    public static void setAllAddons(ArrayList<cake>allAddons(){
+        pseudoDatabase.allAddons = allAddons;
+    }
     public static ArrayList<customer> getAllRows(String TableName) {
 
         ArrayList<customer> array = new ArrayList<customer>();

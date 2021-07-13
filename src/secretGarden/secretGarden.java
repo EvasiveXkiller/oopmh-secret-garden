@@ -54,6 +54,14 @@ public class secretGarden implements webInterface {
         return pseudoDatabase.getAllBreads();
     }
 
+    public ArrayList<cake> getAllDessertItems() {
+        return pseudoDatabase.getAllCakes();
+    }
+
+    public ArrayList<cake> getAllAddOns() {
+        return pseudoDatabase.getAllAddOns();
+    }
+
     // ! FOR TEST DATA ONLY
     public void generateFillData(int amountOfItemsToGenerate) {
         ArrayList<bread> tempAllBread = new ArrayList<bread>();
@@ -63,6 +71,16 @@ public class secretGarden implements webInterface {
             tempAllBread.add(temporary);
         }
         pseudoDatabase.setAllBreads(tempAllBread);
+    }
+
+    public void generateFillData(int amountOfItemsToGenerate) {
+        ArrayList<cake> tempAllCake = new ArrayList<cake>();
+        for (int i = 0; i < amountOfItemsToGenerate; i++) {
+            Random random = new Random();
+            cake temporary = new cake(UUID.randomUUID().toString(), random.nextDouble(), 100);
+            tempAllCake.add(temporary);
+        }
+        pseudoDatabase.setAllCakes(tempAllCake);
     }
 
     /**

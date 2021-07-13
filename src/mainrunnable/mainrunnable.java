@@ -105,7 +105,90 @@ public class mainrunnable {
                     // TODO break out back to the UI
                 }
 
-            } else if (choice2 == 2) {
+            } 
+            
+            //CHOOSE PREORDER STARTS HERE EHRUOEHILFSDJKLFHDSILFHJLDSHJFLDSAKLJ
+            else if (choice2 == 2) {
+                System.out.println("You have chosen pre-order. Are you interested in our selection of cakes or breads? 1 for Bread, 2 for Cakes");
+                int preorder = secretScanner.nextInt();
+                if (preorder == 1){
+                    ArrayList<bread> temporaryBasket = new ArrayList();
+                    ArrayList<bread> itemsFromDB = mainInterface.getAllStandardItems();
+                    //TOOD while loop starts here
+                    System.out.println("These are the pavan\' avaliable for now");
+                    for (bread item : itemsFromDB) {
+                        //TODO sysout all the details of the bread
+                    }
+                    System.out.println("Enter the thing u want to add");
+                    int itemIndex = secretScanner.nextInt();
+                    System.out.println("Enter the amount that u want to for this item"); //TODO replace "this item" with more descriptive text
+                    int multiplier = secretScanner.nextInt();
+                    
+                    for (int i = 0; i < multiplier; i++) {
+                        temporaryBasket.add(itemsFromDB.get(itemIndex));
+                    }
+    
+                    // TODO until a break point
+                    System.out.println("Theses thing are in the cart");
+                    //TODO print the things out
+                    
+                    System.out.println("Are u sure to continue");
+                    //TODO if the orderAmount is > 100, give them a free gift, i guess just sysout you will be given a keychain or smth
+                    if(assert() == yes) {
+                        String orderID = mainInterface.placeOrders(
+                                mainInterface.getCustomer(phoneNum),
+                                temporaryBasket
+                        );
+                    } else {
+                        // TODO break out back to the UI
+                    }
+                }
+                if (preorder == 2) {
+                ArrayList<cake> temporaryCart=new ArrayList();
+                ArrayList<cake> cakeFromDB = mainInterface.getAllDessertItems();
+                System.out.println("These are the cakes available right now.");
+                for (cake item: cakeFromDB){
+                    //displays all the cakes to ur heart's content
+                }
+                System.out.println("Which cake are you interested in?");
+                int cakeIndex = secretScanner.nextInt();
+                    System.out.println("And how many are you interested in purchasing?");
+                    int multiplier1 = secretScanner.nextInt();
+                System.out.println("Are you interested in our add-on services (custom design & custom candles)? [1 for YES || 2 for NO]");
+                int addon = secretScanner.nextInt();
+                if (addon == 1)  {
+                ArrayList<cake> addonsFromDB = mainInterface.getAllAddOns();
+                System.out.println("These are the addons available.");
+                }
+                if (addon == 2) {
+                        for (int i = 0; i < multiplier1; i++) {
+                            temporaryCart.add(cakeFromDB.get(cakeIndex));
+                        }
+                         // TODO until a break point
+                System.out.println("Theses thing are in the cart");
+                //TODO print the things out
+
+                System.out.println("Are u sure to continue");
+
+                if(assert() == yes) {
+                    String orderID = mainInterface.placeOrders(
+                            mainInterface.getCustomer(phoneNum),
+                            temporaryCart
+                    );
+                } else {
+                    // TODO break out back to the UI
+                }
+
+                    }
+            
+            if (addon == 3){
+                System.out.println("'look at this dude thinking he's funny entering another number','bruh ifkr, get a life bruh its 1 or 2.'");   
+            }
+            }
+               
+            else {
+                    System.out.println("'look at this dude thinking he's funny entering another number','bruh ifkr, get a life bruh its 1 or 2.'");
+                }
                     /*
                     getcake and fill in secretGarden.items.cake styles and data
                     put loop and a exit method here for the customer to put more than one item to cart
