@@ -6,8 +6,12 @@ import secretGarden.enums.order;
 import secretGarden.enums.sort;
 import secretGarden.interfaces.webInterface;
 import secretGarden.items.bread;
+import secretGarden.utils.utils;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Random;
 import java.util.UUID;
 
@@ -19,7 +23,7 @@ public class secretGarden implements webInterface {
     }
 
     @Override
-    public String placeOrders(customer customer, String collectionDate, ArrayList<Object> items) {
+    public String placeOrders(customer customer, LocalDateTime collectionDate, ArrayList<Object> items) {
         // placeholder entry, need subroutine to figure out if customer exists
         orders temporary = new orders(
                 new customer(
@@ -115,15 +119,20 @@ public class secretGarden implements webInterface {
         // https://stackoverflow.com/questions/2784514/sort-arraylist-of-custom-objects-by-property
         switch (sortMethod) {
             //TODO sort the thing
-            case DATE -> {
-            }
-            case TYPE -> {
-            }
-            case AMOUNT_OF_ITEMS -> {
-            }
-            case ORDER_PRICE -> {
-            }
-            default -> filteredOrderSort = filteredOrdersUnsort;
+            case DATE:
+            	filteredOrderSort = utils.DateComparator(filteredOrdersUnsort);
+            	break;
+            case TYPE:
+            	
+            	break;
+            case AMOUNT_OF_ITEMS:
+            	
+            	break;
+            case ORDER_PRICE:
+            	
+            	break;
+
+            default: filteredOrderSort = filteredOrdersUnsort;
         }
         return filteredOrderSort;
     }

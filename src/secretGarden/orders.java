@@ -6,6 +6,7 @@ import secretGarden.enums.order;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
 
 public class orders {
@@ -48,7 +49,7 @@ public class orders {
      * @param items
      */
     orders(customer customer, order orderType, ArrayList items) {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDateTime now = LocalDateTime.now();
         this.uid = UUID.randomUUID().toString();
         this.owner = customer;
