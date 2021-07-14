@@ -4,34 +4,29 @@ import secretGarden.database.pseudoDatabase;
 import secretGarden.enums.membership;
 import secretGarden.enums.order;
 import secretGarden.enums.sort;
-import secretGarden.interfaces.webInterface;
 import secretGarden.items.bread;
+import secretGarden.items.cake;
 import secretGarden.utils.utils;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Random;
 import java.util.UUID;
 
 
-public class secretGarden implements webInterface {
+public class secretGarden {
 
     public secretGarden() {
         this.generateFillData(50);
     }
 
-    @Override
-    public String placeOrders(customer customer, LocalDateTime collectionDate, ArrayList<Object> items) {
-        // placeholder entry, need subroutine to figure out if customer exists
+    public String placeOrders(customer customer, LocalDateTime collectionDate, ArrayList items) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         orders temporary = new orders(
-                new customer(
-                        "asdasd",
-                        membership.STANDARD,
-                        0),
-                type,
-                collectionDate,
+                customer,
+                order.PRE_ORDER,
+                dtf.format(collectionDate),
                 items);
         pseudoDatabase.addOrder(temporary);
         // insert some database code to insert into database
@@ -49,41 +44,37 @@ public class secretGarden implements webInterface {
         return null;
     }
 
-    @Override
     public ArrayList<bread> getAllStandardItems() {
         return pseudoDatabase.getAllBreads();
     }
 
-    public ArrayList<cake> getAllDessertItems() {
+    public ArrayList<cake> getAllCakesItems() {
         return pseudoDatabase.getAllCakes();
     }
 
-    public ArrayList<cake> getAllAddOns() {
-        return pseudoDatabase.getAllAddOns();
-    }
-
-    // ! FOR TEST DATA ONLY
+    /**
+     * TEST DATA [CARLSON]
+     *
+     * @param amountOfItemsToGenerate
+     */
     public void generateFillData(int amountOfItemsToGenerate) {
+        ArrayList<cake> tempAllCake = new ArrayList<cake>();
         ArrayList<bread> tempAllBread = new ArrayList<bread>();
         for (int i = 0; i < amountOfItemsToGenerate; i++) {
             Random random = new Random();
             bread temporary = new bread(UUID.randomUUID().toString(), random.nextDouble(), 100);
             tempAllBread.add(temporary);
         }
+        tempAllCake.add(new cake("VANILLA", 77));
+        tempAllCake.add(new cake("TIRAMISU", 770));
+        tempAllCake.add(new cake("CHOCOLATE", 7700));
+        pseudoDatabase.setAllCakes(tempAllCake);
         pseudoDatabase.setAllBreads(tempAllBread);
     }
 
-    public void generateFillData(int amountOfItemsToGenerate) {
-        ArrayList<cake> tempAllCake = new ArrayList<cake>();
-        for (int i = 0; i < amountOfItemsToGenerate; i++) {
-            Random random = new Random();
-            cake temporary = new cake(UUID.randomUUID().toString(), random.nextDouble(), 100);
-            tempAllCake.add(temporary);
-        }
-        pseudoDatabase.setAllCakes(tempAllCake);
-    }
-
     /**
+     * Method to check if customer exists from the database [CARLSON]
+     *
      * @param phoneNum
      * @return
      */
@@ -99,6 +90,12 @@ public class secretGarden implements webInterface {
         return found;
     }
 
+    /**
+     * Creates a new customer [CARLSON]
+     *
+     * @param phoneNum
+     * @param name
+     */
     public void createNewCustomer(String phoneNum, String name) {
         customer newCustomer = new customer(
                 phoneNum,
@@ -108,6 +105,12 @@ public class secretGarden implements webInterface {
         pseudoDatabase.addCustomer(newCustomer);
     }
 
+    /**
+     * Gets the customer information [CARLSON]
+     *
+     * @param phoneNum
+     * @return
+     */
     public customer getCustomer(String phoneNum) {
         ArrayList<customer> allSignedUpCustomer = pseudoDatabase.getAllCustomer();
         customer found = null;
@@ -120,6 +123,13 @@ public class secretGarden implements webInterface {
         return found;
     }
 
+    /**
+     * Get all the orders from the specified customer [PAVAN]
+     *
+     * @param phoneNum
+     * @param sortMethod
+     * @return
+     */
     public ArrayList<orders> getThisCustomerOrder(String phoneNum, sort sortMethod) {
         ArrayList<orders> allOrders = this.getAllOrders();
         ArrayList<orders> filteredOrdersUnsort = new ArrayList<orders>();
@@ -132,25 +142,25 @@ public class secretGarden implements webInterface {
                 filteredOrdersUnsort.add(currentOrder);
             }
         }
-
         // we have all the customers orders.
         // https://stackoverflow.com/questions/2784514/sort-arraylist-of-custom-objects-by-property
         switch (sortMethod) {
             //TODO sort the thing
             case DATE:
-            	filteredOrderSort = utils.DateComparator(filteredOrdersUnsort);
-            	break;
+                filteredOrderSort = utils.sortOrderByDate(filteredOrdersUnsort);
+                break;
             case TYPE:
-            	
-            	break;
-            case AMOUNT_OF_ITEMS:
-            	
-            	break;
-            case ORDER_PRICE:
-            	
-            	break;
 
-            default: filteredOrderSort = filteredOrdersUnsort;
+                break;
+            case AMOUNT_OF_ITEMS:
+
+                break;
+            case ORDER_PRICE:
+
+                break;
+
+            default:
+                filteredOrderSort = filteredOrdersUnsort;
         }
         return filteredOrderSort;
     }

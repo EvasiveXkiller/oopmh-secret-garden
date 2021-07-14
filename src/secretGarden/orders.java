@@ -1,16 +1,13 @@
 package secretGarden;
 
-import secretGarden.enums.membership;
 import secretGarden.enums.order;
 
-import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.UUID;
 
 public class orders {
-
 
     private customer owner;
     private String uid;
@@ -26,8 +23,10 @@ public class orders {
     public void setOwner(customer owner) {
         this.owner = owner;
     }
+
     /**
      * Pre Order
+     *
      * @param owner
      * @param orderType
      * @param collectionDate
@@ -44,6 +43,7 @@ public class orders {
 
     /**
      * Standard Order
+     *
      * @param customer
      * @param orderType
      * @param items
@@ -67,8 +67,8 @@ public class orders {
         return uid;
     }
 
-    public void setUUID(String UUID) {
-        this.uid = UUID;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public order getOrderType() {
@@ -79,27 +79,19 @@ public class orders {
         this.orderType = orderType;
     }
 
-    public Object getItems() {
-        return items;
-    }
-
-    public void setItems(Object items) {
-        this.items = items;
-    }
-
-    public order getorderType() {
-        return orderType;
-    }
-
-    public void setorderType(order orderType) {
-        this.orderType = orderType;
-    }
-
     public String getCollectionDate() {
         return collectionDate;
     }
 
     public void setCollectionDate(String collectionDate) {
         this.collectionDate = collectionDate;
+    }
+
+    public ArrayList getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList items) {
+        this.items = items;
     }
 }

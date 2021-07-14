@@ -6,6 +6,13 @@ public class cake {
     private String customDesign;
     private String customCandles;
 
+    public cake(String name, double price) {
+        this.name = name;
+        this.price = price;
+        this.customDesign = "";
+        this.customCandles = "";
+    }
+
     public String getName() {
         return name;
     }

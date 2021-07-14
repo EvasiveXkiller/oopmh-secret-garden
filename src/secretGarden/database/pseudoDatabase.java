@@ -3,6 +3,7 @@ package secretGarden.database;
 import secretGarden.customer;
 import secretGarden.interfaces.databaseInterface;
 import secretGarden.items.bread;
+import secretGarden.items.cake;
 import secretGarden.orders;
 
 import java.util.ArrayList;
@@ -15,10 +16,9 @@ public class pseudoDatabase implements databaseInterface {
     // pseudo database
     private static ArrayList<bread> allBreads = new ArrayList<bread>();
     private static ArrayList<cake> allCakes = new ArrayList<cake>();
-    private static ArrayList<orders> allOrders = new ArrayList<orders>();
-    private static ArrayList<customer> allCustomers = new ArrayList<customer>();
+    private static final ArrayList<orders> allOrders = new ArrayList<orders>();
+    private static final ArrayList<customer> allCustomers = new ArrayList<customer>();
     // end of pseudo database
-
 
     /**
      * Adds a new order to the end of the list
@@ -32,7 +32,6 @@ public class pseudoDatabase implements databaseInterface {
     /**
      * Finds from the database for the given order;
      *
-     * @param uid The id of the order
      * @return The order if its found, else null
      */
     public static ArrayList<orders> getAllOrders() {
@@ -74,26 +73,4 @@ public class pseudoDatabase implements databaseInterface {
         pseudoDatabase.allCakes = allCakes;
     }
 
-    public static ArrayList<cake> getAllAddons(){
-        return allAddons;
-    }
-    public static void setAllAddons(ArrayList<cake>allAddons(){
-        pseudoDatabase.allAddons = allAddons;
-    }
-    public static ArrayList<customer> getAllRows(String TableName) {
-
-        ArrayList<customer> array = new ArrayList<customer>();
-
-        for (Result result : results) {
-            for (KeyValue rowKV : result.raw()) {
-                ("Table Name:" + TableName + " ");
-                ("Column Family Name:" + new String(rowKV.getFamily()) + " ");
-                ("Line Name:" + new String(rowKV.getRow()) + " ");
-                ("Timestamp:" + rowKV.getTimestamp() + " ");
-                ("Column Name:" + new String(rowKV.getQualifier()) + " ");
-                ("value:" + new String(rowKV.getValue()));
-            }
-        }
-        return null;
-    }
 }

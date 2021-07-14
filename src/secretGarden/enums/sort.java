@@ -4,5 +4,5 @@ public enum sort {
     DATE,
     TYPE,
     AMOUNT_OF_ITEMS,
-    ORDER_PRICE;
+    ORDER_PRICE
 }
