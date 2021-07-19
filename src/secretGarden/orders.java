@@ -1,6 +1,7 @@
 package secretGarden;
 
 import secretGarden.enums.order;
+import secretGarden.interfaces.orderInterface;
 import secretGarden.items.bread;
 import secretGarden.items.cake;
 
@@ -12,7 +13,7 @@ import java.util.UUID;
 /**
  * Orders class, To be inserted into database
  */
-public class orders {
+public class orders implements orderInterface {
 
     private customer owner;
     private String uid;

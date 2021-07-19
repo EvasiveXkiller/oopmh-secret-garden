@@ -1,20 +1,19 @@
 package secretGarden.interfaces;
 
-import secretGarden.customer;
-
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public interface customerInterface {
     /**
-     * Get the customer Information
-     * @param uid The customer's id [phone number in this case]
-     * @return customer object
+     * Sets if the user can be premium
+     *
+     * @param eligible set to true if eligible
      */
-    customer getCustomerInfo(String uid);
+    void setMembershipEligibility(boolean eligible);
 
     /**
-     * Updates the membership status, will set the expiration date to next 2 years automatically
-     * @return Date object of expiration Date;
+     * Updates the membership, date is set to today
+     *
+     * @return The next expiration date
      */
-    Date updateMembershipStatus();
+    LocalDateTime updateMembershipStatus();
 }

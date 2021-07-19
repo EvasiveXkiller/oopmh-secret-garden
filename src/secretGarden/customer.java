@@ -1,13 +1,14 @@
 package secretGarden;
 
 import secretGarden.enums.membership;
+import secretGarden.interfaces.customerInterface;
 
 import java.time.LocalDateTime;
 
 /**
  * Customer class to hold customer details
  */
-public class customer {
+public class customer implements customerInterface {
     private String customerID;
     private String customerName;
     private membership memberStatus;
@@ -27,6 +28,7 @@ public class customer {
      * @return The next expiration date
      */
     public LocalDateTime updateMembershipStatus() {
+        this.memberStatus = membership.PREMIUM;
         LocalDateTime actualDateTime = LocalDateTime.now();
         this.expirationDate = actualDateTime.plusYears(2);
         return expirationDate;

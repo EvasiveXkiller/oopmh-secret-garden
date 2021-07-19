@@ -4,6 +4,7 @@ import secretGarden.database.pseudoDatabase;
 import secretGarden.enums.membership;
 import secretGarden.enums.order;
 import secretGarden.enums.sort;
+import secretGarden.interfaces.webInterface;
 import secretGarden.items.bread;
 import secretGarden.items.cake;
 import secretGarden.utils.utils;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.UUID;
 
-public class secretGarden {
+public class secretGarden implements webInterface {
 
     /**
      * Constructor, calls the dummy data generator immediately
