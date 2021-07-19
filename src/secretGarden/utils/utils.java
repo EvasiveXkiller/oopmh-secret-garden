@@ -26,7 +26,7 @@ public class utils {
      * @return
      */
     public static ArrayList<orders> sortOrderByDate(ArrayList<orders> orders) {
-        Collections.sort(orders, (order1, order2) -> {
+        orders.sort((order1, order2) -> {
             // TODO Auto-generated method stub
             String date1 = order1.getCollectionDate();
             String date2 = order2.getCollectionDate();
@@ -62,28 +62,23 @@ public class utils {
         });
         return orders;
     }
-    
-}
-    /*
-    public static ArrayList<order> sortOrderByMethod(ArrayList<order> order) {
-    	 Collections.sort(order, (type1, type2) -> {
-    		return Integer.compare(getAssignedValue(type1), getAssignedValue(type2));
-    	}
-    	
-    	 private static int getAssignedValue(ArrayList<order> order) {
-    			// TODO Auto-generated method stub
-    		switch (order) {
-    		case PRE_ORDER:
-    			return 0;
-    		case STANDARD:
-    			return 1;
-			default:
-    			return Integer.MAX_VALUE;
-    		}
-		return 0;
-    	 }
+
+    public static ArrayList<orders> sortOrderByItems(ArrayList<orders> orders) {
+        orders.sort(Comparator.comparingInt(orderLocal -> orderLocal.getItems().size()));
+        return orders;
     }
+
+    public static ArrayList<orders> sortOrderByPrice(ArrayList<orders> orders) {
+        orders.sort(Comparator.comparingDouble(secretGarden.orders::getPrice));
+        return orders;
+    }
+
+    public static ArrayList<orders> sortOrderByType(ArrayList<orders> orders) {
+        orders.sort(Comparator.comparing(secretGarden.orders::getOrderType));
+        return orders;
+    }
+
 }
-*/
+
     
 

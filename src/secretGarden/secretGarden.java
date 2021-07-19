@@ -143,26 +143,36 @@ public class secretGarden {
             }
         }
         // we have all the customers orders.
-        // https://stackoverflow.com/questions/2784514/sort-arraylist-of-custom-objects-by-property
         switch (sortMethod) {
             //TODO sort the thing
             case DATE:
                 filteredOrderSort = utils.sortOrderByDate(filteredOrdersUnsort);
                 break;
             case TYPE:
-            	filteredOrderSort = utils.sortOrderByMethod(filteredOrdersUnsort);
+                filteredOrderSort = utils.sortOrderByType(filteredOrdersUnsort);
                 break;
             case AMOUNT_OF_ITEMS:
-
+                filteredOrderSort = utils.sortOrderByItems(filteredOrdersUnsort);
                 break;
             case ORDER_PRICE:
-
+                filteredOrderSort = utils.sortOrderByPrice(filteredOrdersUnsort);
                 break;
-
             default:
                 filteredOrderSort = filteredOrdersUnsort;
         }
         return filteredOrderSort;
+    }
+
+    public orders getThisCustomerOrderSingle(String ID) {
+        ArrayList<orders> allOrders = this.getAllOrders();
+        orders order = null;
+        for (orders orderlocal : allOrders) {
+            if (orderlocal.getUUID().equals(ID)) {
+                order = orderlocal;
+                break;
+            }
+        }
+        return order;
     }
 
     private ArrayList<orders> getAllOrders() {

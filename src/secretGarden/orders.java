@@ -1,6 +1,8 @@
 package secretGarden;
 
 import secretGarden.enums.order;
+import secretGarden.items.bread;
+import secretGarden.items.cake;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -9,11 +11,18 @@ import java.util.UUID;
 
 public class orders {
 
+    class orderWrapper {
+        public cake cakeItem;
+        public bread breadItem;
+    }
+
+
     private customer owner;
     private String uid;
     private order orderType;
     private String collectionDate;
-    private ArrayList items;
+    private ArrayList<orders, cake> items;
+    private double price;
 
 
     public customer getOwner() {
@@ -38,6 +47,7 @@ public class orders {
         this.orderType = orderType;
         this.collectionDate = collectionDate;
         this.items = items;
+        this.price = this.calculateTotal();
         this.calculateMembershipFeatures(true);
     }
 
@@ -56,7 +66,16 @@ public class orders {
         this.orderType = orderType;
         this.collectionDate = dtf.format(now);
         this.items = items;
+        this.price = this.calculateTotal();
         this.calculateMembershipFeatures(false);
+    }
+
+    private double calculateTotal() {
+        double tempTotal = 0;
+        for (Object item : items) {
+            tempTotal += item.getPrice();
+        }
+        return tempTotal;
     }
 
     private void calculateMembershipFeatures(boolean preorder) {
@@ -93,5 +112,9 @@ public class orders {
 
     public void setItems(ArrayList items) {
         this.items = items;
+    }
+
+    public double getPrice() {
+        return this.price;
     }
 }

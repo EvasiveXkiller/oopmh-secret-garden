@@ -48,8 +48,8 @@ public class mainrunnable {
             s created and the program proceeds
             */
             System.out.println("Not found! Creating a new one, PLease enter your name");
-            String wierdName = secretScanner.nextLine();
-            mainInterface.createNewCustomer(phoneNum, wierdName);
+            String weirdName = secretScanner.nextLine();
+            mainInterface.createNewCustomer(phoneNum, weirdName);
         }
 
         //checkCustomerID // DONE
@@ -111,7 +111,10 @@ public class mainrunnable {
 
             //CHOOSE PREORDER STARTS HERE EHRUOEHILFSDJKLFHDSILFHJLDSHJFLDSAKLJ
             else if (choice2 == 2) {
-                System.out.println("You have chosen pre-order. Are you interested in our selection of cakes or breads? 1 for Bread, 2 for Cakes");
+                System.out.println("You have chosen pre-order. " +
+                        "Are you interested in our selection of cakes or breads? " +
+                        "1 for Bread, " +
+                        "2 for Cakes");
                 int preorder = secretScanner.nextInt();
                 if (preorder == 1) {
                     ArrayList<bread> temporaryBasket = new ArrayList();
@@ -211,13 +214,21 @@ public class mainrunnable {
             }
         } else if (choice1 == 2) {
 
+
+            //TODO jun 2 sub methods
+            //1 show 1 order, order number
+            //2 show all orders, sort by 4 methods in enums
+
             /*
             if there are orders under customer -> getOrderStatus() under the customerID
             if there are no orders under customer -> "there are currently no active orders"
             loops back to choice 1
             */
 
+            //1
+            orders single = mainInterface.getThisCustomerOrderSingle("");
 
+            //2
             System.out.println("customer ID + Customer name");
             ArrayList<orders> sorted = mainInterface.getThisCustomerOrder(phoneNum, sort.DATE);
             //TODO print it out here;
