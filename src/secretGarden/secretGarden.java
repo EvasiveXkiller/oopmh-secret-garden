@@ -150,7 +150,7 @@ public class secretGarden {
                 filteredOrderSort = utils.sortOrderByDate(filteredOrdersUnsort);
                 break;
             case TYPE:
-
+            	filteredOrderSort = utils.sortOrderByMethod(filteredOrdersUnsort);
                 break;
             case AMOUNT_OF_ITEMS:
 

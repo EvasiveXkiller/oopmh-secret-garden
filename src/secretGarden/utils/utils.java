@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import secretGarden.orders;
+import secretGarden.enums.order;
 
 public class utils {
     /**
@@ -61,4 +62,28 @@ public class utils {
         });
         return orders;
     }
+    
 }
+    /*
+    public static ArrayList<order> sortOrderByMethod(ArrayList<order> order) {
+    	 Collections.sort(order, (type1, type2) -> {
+    		return Integer.compare(getAssignedValue(type1), getAssignedValue(type2));
+    	}
+    	
+    	 private static int getAssignedValue(ArrayList<order> order) {
+    			// TODO Auto-generated method stub
+    		switch (order) {
+    		case PRE_ORDER:
+    			return 0;
+    		case STANDARD:
+    			return 1;
+			default:
+    			return Integer.MAX_VALUE;
+    		}
+		return 0;
+    	 }
+    }
+}
+*/
+    
+
