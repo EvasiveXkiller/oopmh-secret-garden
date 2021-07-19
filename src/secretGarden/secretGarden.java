@@ -59,11 +59,11 @@ public class secretGarden {
      * @param amountOfItemsToGenerate
      */
     public void generateFillData(int amountOfItemsToGenerate) {
-        ArrayList<cake> tempAllCake = new ArrayList<cake>();
-        ArrayList<bread> tempAllBread = new ArrayList<bread>();
+        ArrayList<cake> tempAllCake = new ArrayList<>();
+        ArrayList<bread> tempAllBread = new ArrayList<>();
         for (int i = 0; i < amountOfItemsToGenerate; i++) {
             Random random = new Random();
-            bread temporary = new bread(UUID.randomUUID().toString(), random.nextDouble(), 100);
+            bread temporary = new bread(UUID.randomUUID().toString(), random.nextDouble());
             tempAllBread.add(temporary);
         }
         tempAllCake.add(new cake("VANILLA", 77));
@@ -133,8 +133,8 @@ public class secretGarden {
      */
     public ArrayList<orders> getThisCustomerOrder(String phoneNum, sort sortMethod) {
         ArrayList<orders> allOrders = this.getAllOrders();
-        ArrayList<orders> filteredOrdersUnsort = new ArrayList<orders>();
-        ArrayList<orders> filteredOrderSort = new ArrayList<orders>();
+        ArrayList<orders> filteredOrdersUnsort = new ArrayList<>();
+        ArrayList<orders> filteredOrderSort;
 
         for (orders currentOrder : allOrders) {
             customer orderOwner = currentOrder.getOwner();

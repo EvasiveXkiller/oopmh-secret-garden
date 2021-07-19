@@ -14,10 +14,10 @@ import java.util.ArrayList;
  */
 public class pseudoDatabase implements databaseInterface {
     // pseudo database
-    private static ArrayList<bread> allBreads = new ArrayList<bread>();
-    private static ArrayList<cake> allCakes = new ArrayList<cake>();
-    private static final ArrayList<orders> allOrders = new ArrayList<orders>();
-    private static final ArrayList<customer> allCustomers = new ArrayList<customer>();
+    private static ArrayList<bread> allBreads = new ArrayList<>();
+    private static ArrayList<cake> allCakes = new ArrayList<>();
+    private static final ArrayList<orders> allOrders = new ArrayList<>();
+    private static final ArrayList<customer> allCustomers = new ArrayList<>();
     // end of pseudo database
 
     /**

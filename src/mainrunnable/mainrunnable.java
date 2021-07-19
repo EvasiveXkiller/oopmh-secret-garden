@@ -76,7 +76,7 @@ public class mainrunnable {
                     return orderID and price upon successful order
                     exit program
                     */
-                ArrayList<bread> temporaryBasket = new ArrayList();
+                ArrayList<bread> temporaryBasket = new ArrayList<>();
                 ArrayList<bread> itemsFromDB = mainInterface.getAllStandardItems();
                 //TOOD while loop starts here
                 System.out.println("These are the pavan' avaliable for now");
@@ -117,7 +117,7 @@ public class mainrunnable {
                         "2 for Cakes");
                 int preorder = secretScanner.nextInt();
                 if (preorder == 1) {
-                    ArrayList<bread> temporaryBasket = new ArrayList();
+                    ArrayList<bread> temporaryBasket = new ArrayList<>();
                     ArrayList<bread> itemsFromDB = mainInterface.getAllStandardItems();
                     //TODO while loop starts here
                     System.out.println("These are the pavan' avaliable for now");

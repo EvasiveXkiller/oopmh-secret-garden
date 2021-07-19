@@ -1,6 +1,6 @@
 package secretGarden.items;
 
-public class cake {
+public class cake extends itemBase {
     private String name;
     private double price;
     private String customDesign;

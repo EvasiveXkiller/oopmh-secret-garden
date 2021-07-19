@@ -1,13 +1,8 @@
 package secretGarden.items;
 
-public class bread extends itemBase {
+abstract class itemBase {
     private String name;
     private double price;
-
-    public bread(String name, double price) {
-        this.name = name;
-        this.price = price;
-    }
 
     public String getName() {
         return name;
