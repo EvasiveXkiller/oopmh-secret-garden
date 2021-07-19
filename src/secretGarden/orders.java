@@ -9,6 +9,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.UUID;
 
+/**
+ * Orders class, To be inserted into database
+ */
 public class orders {
 
     private customer owner;
@@ -20,11 +23,13 @@ public class orders {
     private double price;
 
     /**
-     * Pre Order
+     * Constructor for preorder
      *
-     * @param owner
-     * @param orderType
-     * @param collectionDate
+     * @param owner          the owner of the order
+     * @param orderType      the type of the order
+     * @param collectionDate the collection date of this order
+     * @param itemBread      any bread that is ordered
+     * @param itemCake       any cake that is ordered
      */
     orders(customer owner, order orderType, String collectionDate, ArrayList<bread> itemBread, ArrayList<cake> itemCake) {
         this.owner = owner;
@@ -38,10 +43,11 @@ public class orders {
     }
 
     /**
-     * Standard Order
+     * Constructor for standard order, cakes are not allowed
      *
-     * @param customer
-     * @param orderType
+     * @param customer  the owner of the order
+     * @param orderType the type of the order
+     * @param breads    the breads for this order
      */
     orders(customer customer, order orderType, ArrayList<bread> breads) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -55,6 +61,11 @@ public class orders {
         this.calculateMembershipFeatures(false);
     }
 
+    /**
+     * Calculates the total price
+     *
+     * @return The total price of the order
+     */
     private double calculateTotal() {
         double tempTotal = 0;
         if (!(itemsBread.size() == 0)) {
@@ -70,14 +81,25 @@ public class orders {
         return tempTotal;
     }
 
+    /**
+     * Checks if the member can be premium
+     *
+     * @param preorder Is the order membership.premium capable?
+     */
     private void calculateMembershipFeatures(boolean preorder) {
         if (preorder) owner.setMembershipEligibility(true);
     }
 
+    /**
+     * Get total item count
+     *
+     * @return Total Item Count
+     */
     public int getItemCount() {
         return itemCake.size() + itemsBread.size();
     }
 
+    // Getter and setters
     public customer getOwner() {
         return owner;
     }

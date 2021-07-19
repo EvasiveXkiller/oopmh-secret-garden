@@ -1,5 +1,8 @@
 package secretGarden.items;
 
+/**
+ * Bread item Class
+ */
 public class bread extends itemBase {
     private String name;
     private double price;
@@ -9,6 +12,7 @@ public class bread extends itemBase {
         this.price = price;
     }
 
+    // getters and setters
     public String getName() {
         return name;
     }

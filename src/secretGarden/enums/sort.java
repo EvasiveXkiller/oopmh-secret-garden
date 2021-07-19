@@ -1,5 +1,8 @@
 package secretGarden.enums;
 
+/**
+ * Constant for sorting types
+ */
 public enum sort {
     DATE,
     TYPE,

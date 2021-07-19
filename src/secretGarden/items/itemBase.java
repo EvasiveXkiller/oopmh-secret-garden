@@ -1,5 +1,8 @@
 package secretGarden.items;
 
+/**
+ * Base class for all items, if needed
+ */
 abstract class itemBase {
     private String name;
     private double price;

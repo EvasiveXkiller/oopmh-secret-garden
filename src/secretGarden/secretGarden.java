@@ -14,13 +14,24 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.UUID;
 
-
 public class secretGarden {
 
+    /**
+     * Constructor, calls the dummy data generator immediately
+     */
     public secretGarden() {
         this.generateFillData(50);
     }
 
+    /**
+     * Places a new order, Pre Order type
+     *
+     * @param customer       the customer that owns this order
+     * @param collectionDate the collection date
+     * @param itemBread      any bread items
+     * @param itemCake       any cake items
+     * @return the order ID
+     */
     public String placeOrders(customer customer, LocalDateTime collectionDate, ArrayList<bread> itemBread, ArrayList<cake> itemCake) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         orders temporary = new orders(
@@ -30,10 +41,16 @@ public class secretGarden {
                 itemBread,
                 itemCake);
         pseudoDatabase.addOrder(temporary);
-        // insert some database code to insert into database
         return temporary.getUid();
     }
 
+    /**
+     * Places a new order, Standard type
+     *
+     * @param customer the customer that owns this order
+     * @param items    the bread items in the order
+     * @return the order iD
+     */
     public String placeOrders(customer customer, ArrayList<bread> items) {
         orders temporary = new orders(customer, order.STANDARD, items);
         pseudoDatabase.addOrder(temporary);
@@ -41,43 +58,12 @@ public class secretGarden {
         return temporary.getUid();
     }
 
-    public order getOrder(String uid) {
-        return null;
-    }
-
-    public ArrayList<bread> getAllStandardItems() {
-        return pseudoDatabase.getAllBreads();
-    }
-
-    public ArrayList<cake> getAllCakesItems() {
-        return pseudoDatabase.getAllCakes();
-    }
 
     /**
-     * TEST DATA [CARLSON]
+     * Checks if the customer is in the database
      *
-     * @param amountOfItemsToGenerate
-     */
-    public void generateFillData(int amountOfItemsToGenerate) {
-        ArrayList<cake> tempAllCake = new ArrayList<>();
-        ArrayList<bread> tempAllBread = new ArrayList<>();
-        for (int i = 0; i < amountOfItemsToGenerate; i++) {
-            Random random = new Random();
-            bread temporary = new bread(UUID.randomUUID().toString(), random.nextDouble());
-            tempAllBread.add(temporary);
-        }
-        tempAllCake.add(new cake("VANILLA", 77));
-        tempAllCake.add(new cake("TIRAMISU", 770));
-        tempAllCake.add(new cake("CHOCOLATE", 7700));
-        pseudoDatabase.setAllCakes(tempAllCake);
-        pseudoDatabase.setAllBreads(tempAllBread);
-    }
-
-    /**
-     * Method to check if customer exists from the database [CARLSON]
-     *
-     * @param phoneNum
-     * @return
+     * @param phoneNum Phone number as ID
+     * @return If the customer exists
      */
     public boolean checkIfCustomerExists(String phoneNum) {
         ArrayList<customer> allSignedUpCustomer = pseudoDatabase.getAllCustomer();
@@ -92,10 +78,10 @@ public class secretGarden {
     }
 
     /**
-     * Creates a new customer [CARLSON]
+     * Creates a new customer,
      *
-     * @param phoneNum
-     * @param name
+     * @param phoneNum Using phone number as an ID
+     * @param name     Name of the customer
      */
     public void createNewCustomer(String phoneNum, String name) {
         customer newCustomer = new customer(
@@ -107,10 +93,10 @@ public class secretGarden {
     }
 
     /**
-     * Gets the customer information [CARLSON]
+     * Gets the customer object from the database
      *
-     * @param phoneNum
-     * @return
+     * @param phoneNum the ID of the customer to get
+     * @return the customer object
      */
     public customer getCustomer(String phoneNum) {
         ArrayList<customer> allSignedUpCustomer = pseudoDatabase.getAllCustomer();
@@ -125,11 +111,11 @@ public class secretGarden {
     }
 
     /**
-     * Get all the orders from the specified customer [PAVAN]
+     * Gets all the orders of a specific customer
      *
-     * @param phoneNum
-     * @param sortMethod
-     * @return
+     * @param phoneNum   the id of the customer
+     * @param sortMethod the sort method
+     * @return an arraylist of orders
      */
     public ArrayList<orders> getThisCustomerOrder(String phoneNum, sort sortMethod) {
         ArrayList<orders> allOrders = this.getAllOrders();
@@ -164,6 +150,12 @@ public class secretGarden {
         return filteredOrderSort;
     }
 
+    /**
+     * Gets a single order based on the order ID
+     *
+     * @param ID the order ID
+     * @return the order
+     */
     public orders getThisCustomerOrderSingle(String ID) {
         ArrayList<orders> allOrders = this.getAllOrders();
         orders order = null;
@@ -176,7 +168,36 @@ public class secretGarden {
         return order;
     }
 
+    // getters and setter
     private ArrayList<orders> getAllOrders() {
         return pseudoDatabase.getAllOrders();
+    }
+
+    public ArrayList<bread> getAllStandardItems() {
+        return pseudoDatabase.getAllBreads();
+    }
+
+    public ArrayList<cake> getAllCakesItems() {
+        return pseudoDatabase.getAllCakes();
+    }
+
+    /**
+     * TEST DATA ONLY
+     *
+     * @param amountOfItemsToGenerate The amount of test data to insert into the database
+     */
+    public void generateFillData(int amountOfItemsToGenerate) {
+        ArrayList<cake> tempAllCake = new ArrayList<>();
+        ArrayList<bread> tempAllBread = new ArrayList<>();
+        for (int i = 0; i < amountOfItemsToGenerate; i++) {
+            Random random = new Random();
+            bread temporary = new bread(UUID.randomUUID().toString(), random.nextDouble());
+            tempAllBread.add(temporary);
+        }
+        tempAllCake.add(new cake("VANILLA", 77));
+        tempAllCake.add(new cake("TIRAMISU", 770));
+        tempAllCake.add(new cake("CHOCOLATE", 7700));
+        pseudoDatabase.setAllCakes(tempAllCake);
+        pseudoDatabase.setAllBreads(tempAllBread);
     }
 }

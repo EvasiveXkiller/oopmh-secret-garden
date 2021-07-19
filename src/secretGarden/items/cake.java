@@ -1,5 +1,8 @@
 package secretGarden.items;
 
+/**
+ * Cake item Class
+ */
 public class cake extends itemBase {
     private String name;
     private double price;
@@ -13,6 +16,7 @@ public class cake extends itemBase {
         this.customCandles = "";
     }
 
+    // Getters and setters
     public String getName() {
         return name;
     }

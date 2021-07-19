@@ -4,6 +4,9 @@ import secretGarden.enums.membership;
 
 import java.time.LocalDateTime;
 
+/**
+ * Customer class to hold customer details
+ */
 public class customer {
     private String customerID;
     private String customerName;
@@ -18,16 +21,27 @@ public class customer {
         this.expirationDate = now;
     }
 
+    /**
+     * Updates the membership, date is set to today
+     *
+     * @return The next expiration date
+     */
     public LocalDateTime updateMembershipStatus() {
         LocalDateTime actualDateTime = LocalDateTime.now();
         this.expirationDate = actualDateTime.plusYears(2);
         return expirationDate;
     }
 
+    /**
+     * Sets if the user can be premium
+     *
+     * @param eligible set to true if eligible
+     */
     public void setMembershipEligibility(boolean eligible) {
         this.memberStatus = eligible ? membership.ELIGIBLE : membership.STANDARD;
     }
 
+    // Getters and Setters
     public String getCustomerID() {
         return customerID;
     }
