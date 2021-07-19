@@ -21,23 +21,24 @@ public class secretGarden {
         this.generateFillData(50);
     }
 
-    public String placeOrders(customer customer, LocalDateTime collectionDate, ArrayList items) {
+    public String placeOrders(customer customer, LocalDateTime collectionDate, ArrayList<bread> itemBread, ArrayList<cake> itemCake) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         orders temporary = new orders(
                 customer,
                 order.PRE_ORDER,
                 dtf.format(collectionDate),
-                items);
+                itemBread,
+                itemCake);
         pseudoDatabase.addOrder(temporary);
         // insert some database code to insert into database
-        return temporary.getUUID();
+        return temporary.getUid();
     }
 
     public String placeOrders(customer customer, ArrayList<bread> items) {
         orders temporary = new orders(customer, order.STANDARD, items);
         pseudoDatabase.addOrder(temporary);
         // insert some database code to insert into database
-        return temporary.getUUID();
+        return temporary.getUid();
     }
 
     public order getOrder(String uid) {
@@ -167,7 +168,7 @@ public class secretGarden {
         ArrayList<orders> allOrders = this.getAllOrders();
         orders order = null;
         for (orders orderlocal : allOrders) {
-            if (orderlocal.getUUID().equals(ID)) {
+            if (orderlocal.getUid().equals(ID)) {
                 order = orderlocal;
                 break;
             }

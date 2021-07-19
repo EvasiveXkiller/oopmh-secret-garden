@@ -144,7 +144,8 @@ public class mainrunnable {
                         String orderID = mainInterface.placeOrders(
                                 mainInterface.getCustomer(phoneNum),
                                 LocalDateTime.now(),
-                                temporaryBasket
+                                temporaryBasket,
+                                null
                         );
                     } else {
                         // TODO break out back to the UI AND show order ID
@@ -179,13 +180,14 @@ public class mainrunnable {
                         //TODO print the things out
 
                         System.out.println("Are u sure to continue");
-                        ArrayList<Object> cakeOrder = new ArrayList<>();
+                        ArrayList<cake> cakeOrder = new ArrayList<>();
                         cakeOrder.add(currentOrder);
                         if (false) {
                             LocalDateTime now = LocalDateTime.now();
                             String orderID = mainInterface.placeOrders(
                                     mainInterface.getCustomer(phoneNum),
                                     LocalDateTime.now(),
+                                    null,
                                     cakeOrder
                             );
                         } else {

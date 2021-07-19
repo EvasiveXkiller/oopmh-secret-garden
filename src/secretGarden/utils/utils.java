@@ -1,12 +1,9 @@
 package secretGarden.utils;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-
 import secretGarden.orders;
-import secretGarden.enums.order;
+
+import java.util.ArrayList;
+import java.util.Comparator;
 
 public class utils {
     /**
@@ -64,7 +61,7 @@ public class utils {
     }
 
     public static ArrayList<orders> sortOrderByItems(ArrayList<orders> orders) {
-        orders.sort(Comparator.comparingInt(orderLocal -> orderLocal.getItems().size()));
+        orders.sort(Comparator.comparingInt(secretGarden.orders::getItemCount));
         return orders;
     }
 

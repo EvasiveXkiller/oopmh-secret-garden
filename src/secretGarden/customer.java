@@ -1,35 +1,31 @@
 package secretGarden;
 
 import secretGarden.enums.membership;
-import secretGarden.interfaces.customerInterface;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.time.LocalDateTime;
 
 public class customer {
     private String customerID;
     private String customerName;
-
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
-
     private membership memberStatus;
-    private Date expirationDate;
+    private LocalDateTime expirationDate;
 
     customer(String customerID, String customerName, membership memberStatus) {
-        Date date = new Date();
+        LocalDateTime now = LocalDateTime.now();
         this.customerName = customerName;
         this.customerID = customerID;
         this.memberStatus = memberStatus;
-        this.expirationDate = date;
+        this.expirationDate = now;
+    }
+
+    public LocalDateTime updateMembershipStatus() {
+        LocalDateTime actualDateTime = LocalDateTime.now();
+        this.expirationDate = actualDateTime.plusYears(2);
+        return expirationDate;
+    }
+
+    public void setMembershipEligibility(boolean eligible) {
+        this.memberStatus = eligible ? membership.ELIGIBLE : membership.STANDARD;
     }
 
     public String getCustomerID() {
@@ -40,6 +36,14 @@ public class customer {
         this.customerID = customerID;
     }
 
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
     public membership getMemberStatus() {
         return memberStatus;
     }
@@ -48,19 +52,12 @@ public class customer {
         this.memberStatus = memberStatus;
     }
 
-    public Date getExpirationDate() {
+    public LocalDateTime getExpirationDate() {
         return expirationDate;
     }
 
-    public void setExpirationDate(Date expirationDate) {
+    public void setExpirationDate(LocalDateTime expirationDate) {
         this.expirationDate = expirationDate;
     }
 
-    public void setMembershipEligibility(boolean eligible) {
-        this.memberStatus = eligible ? membership.ELIGIBLE : membership.STANDARD;
-    }
-
-    public Date updateMembershipStatus() {
-        return null;
-    }
 }
