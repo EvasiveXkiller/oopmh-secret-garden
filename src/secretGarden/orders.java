@@ -8,6 +8,7 @@ import secretGarden.items.cake;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -20,8 +21,8 @@ public class orders implements orderInterface {
     private order orderType;
     private String collectionDate;
     private ArrayList<cake> itemCake;
-    private ArrayList<bread> itemsBread;
-    private double price;
+    private ArrayList<bread> itemBread;
+    private double totalPrice;
 
     /**
      * Constructor for preorder
@@ -37,9 +38,9 @@ public class orders implements orderInterface {
         this.uid = UUID.randomUUID().toString();
         this.orderType = orderType;
         this.collectionDate = collectionDate;
-        this.itemsBread = itemBread;
-        this.itemCake = itemCake;
-        this.price = this.calculateTotal();
+        this.itemBread = itemBread == null ? new ArrayList<>() : this.itemBread;
+        this.itemCake = itemCake == null ? new ArrayList<>() : itemCake;
+        this.totalPrice = this.calculateTotal();
         this.calculateMembershipFeatures(true);
     }
 
@@ -57,8 +58,9 @@ public class orders implements orderInterface {
         this.owner = customer;
         this.orderType = orderType;
         this.collectionDate = dtf.format(now);
-        this.itemsBread = breads;
-        this.price = this.calculateTotal();
+        this.itemBread = breads;
+        this.itemCake = new ArrayList<>();
+        this.totalPrice = this.calculateTotal();
         this.calculateMembershipFeatures(false);
     }
 
@@ -69,8 +71,8 @@ public class orders implements orderInterface {
      */
     private double calculateTotal() {
         double tempTotal = 0;
-        if (!(itemsBread.size() == 0)) {
-            for (bread item : itemsBread) {
+        if (!(itemBread.size() == 0)) {
+            for (bread item : Objects.requireNonNull(itemBread)) {
                 tempTotal += item.getPrice();
             }
         }
@@ -97,7 +99,7 @@ public class orders implements orderInterface {
      * @return Total Item Count
      */
     public int getItemCount() {
-        return itemCake.size() + itemsBread.size();
+        return itemCake.size() + itemBread.size();
     }
 
     // Getter and setters
@@ -141,19 +143,19 @@ public class orders implements orderInterface {
         this.itemCake = itemCake;
     }
 
-    public ArrayList<bread> getItemsBread() {
-        return itemsBread;
+    public ArrayList<bread> getItemBread() {
+        return itemBread;
     }
 
-    public void setItemsBread(ArrayList<bread> itemsBread) {
-        this.itemsBread = itemsBread;
+    public void setItemBread(ArrayList<bread> itemBread) {
+        this.itemBread = itemBread;
     }
 
-    public double getPrice() {
-        return price;
+    public double getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

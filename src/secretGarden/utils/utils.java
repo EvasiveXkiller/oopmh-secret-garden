@@ -66,7 +66,7 @@ public class utils {
     }
 
     public static ArrayList<orders> sortOrderByPrice(ArrayList<orders> orders) {
-        orders.sort(Comparator.comparingDouble(secretGarden.orders::getPrice));
+        orders.sort(Comparator.comparingDouble(secretGarden.orders::getTotalPrice));
         return orders;
     }
 

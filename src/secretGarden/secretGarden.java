@@ -151,12 +151,14 @@ public class secretGarden implements webInterface {
         return filteredOrderSort;
     }
 
+
     /**
      * Gets a single order based on the order ID
      *
      * @param ID the order ID
      * @return the order
      */
+    @Override
     public orders getThisCustomerOrderSingle(String ID) {
         ArrayList<orders> allOrders = this.getAllOrders();
         orders order = null;
@@ -192,7 +194,10 @@ public class secretGarden implements webInterface {
         ArrayList<bread> tempAllBread = new ArrayList<>();
         for (int i = 0; i < amountOfItemsToGenerate; i++) {
             Random random = new Random();
-            bread temporary = new bread(UUID.randomUUID().toString(), random.nextDouble());
+            bread temporary = new bread(UUID.randomUUID().toString(),
+                    // price might lose control but whatever
+                    random.nextInt(10) + (double) Math.round(random.nextDouble() * 100.0) / 100.0
+            );
             tempAllBread.add(temporary);
         }
         tempAllCake.add(new cake("VANILLA", 77));
