@@ -1,9 +1,12 @@
 package mainrunnable;
 
 import secretGarden.*;
+import secretGarden.database.pseudoDatabase;
+import secretGarden.enums.order;
 import secretGarden.enums.sort;
 import secretGarden.items.bread;
 import secretGarden.items.cake;
+import secretGarden.utils.utils;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -40,34 +43,34 @@ public class mainrunnable {
         String phoneNum = secretScanner.nextLine();
 
         if (mainInterface.checkIfCustomerExists(phoneNum)) {
-            System.out.println("User found in weird thing, continuing");
+            System.out.println("User found in database, continuing.");
         } else {
             /*if customerID is nonexistent,
             create customerID for the customer based on the phoneNum entered,
             notify customer that a new customerID i
             s created and the program proceeds
             */
-            System.out.println("Not found! Creating a new one, PLease enter your name");
-            String weirdName = secretScanner.nextLine();
-            mainInterface.createNewCustomer(phoneNum, weirdName);
+            System.out.println("Your phone number is not found! Please enter your name to create an account.");
+            String customerName = secretScanner.nextLine();
+            mainInterface.createNewCustomer(phoneNum, customerName);
         }
-
-        //checkCustomerID // DONE
-
-        //if (customerID = exist) program proceeds
         System.out.println(" ");
         System.out.println("Please choose one of the following:");
         System.out.println("1. Place order");
         System.out.println("2. Get status of your order"); //TODO pavan
         System.out.println("3. Exit program");
-        int choice1 = secretScanner.nextInt();
-
+        int choice1;
+        
+        do {
+        choice1 = secretScanner.nextInt();
         if (choice1 == 1) {
             System.out.println("What type of order would you like to place?");
             System.out.println("1. Standard");
             System.out.println("2. Pre-Order"); // TODO ivan can take care of this
-            int choice2 = secretScanner.nextInt();
+            int choice2;
 
+            do {
+            choice2 = secretScanner.nextInt();
             if (choice2 == 1) {
                     /*
                     getallitems -> customer will choose one and add it to cart
@@ -79,34 +82,53 @@ public class mainrunnable {
                 ArrayList<bread> temporaryBasket = new ArrayList<>();
                 ArrayList<bread> itemsFromDB = mainInterface.getAllStandardItems();
                 //TOOD while loop starts here
-                System.out.println("These are the pavan' avaliable for now");
+                System.out.println("These are the breads avaliable in our bakery.");
                 for (bread item : itemsFromDB) {
-                    //TODO sysout all the details of the bread
+                    //need an index here
+                    System.out.println("Bread:" + item.getName());
+                    System.out.println("Price:" + item.getPrice());
                 }
-                System.out.println("Enter the thing u want to add");
-                int itemIndex = secretScanner.nextInt();
-                System.out.println("Enter the amount that u want to for this item"); //TODO replace "this item" with more descriptive text
-                int multiplier = secretScanner.nextInt();
 
+                int checkOut;
+                do {
+                System.out.println("You can add these items to the cart.");
+                int itemIndex = secretScanner.nextInt();
+                System.out.println("Enter the amount that u want to for this item."); //TODO replace "this item" with more descriptive text
+                int multiplier = secretScanner.nextInt();
+                
                 for (int i = 0; i < multiplier; i++) {
                     temporaryBasket.add(itemsFromDB.get(itemIndex));
                 }
 
+                
                 // TODO until a break point
-                System.out.println("Theses thing are in the cart");
+                System.out.println("Theses thing are in the cart.");
                 //TODO print the things out
+                for (int i = 0; i < temporaryBasket.size(); i++){
+                    System.out.println(temporaryBasket.get(i));
+                    //not sure how to access the price
+                }
 
-                System.out.println("Are u sure to continue");
+                System.out.println("Continue to checkout?");
+                System.out.println("1. Yes");
+                System.out.println("2. No");
+                checkOut = secretScanner.nextInt();
 
-                if (true) {
+                if (checkOut == 1) {
                     String orderID = mainInterface.placeOrders(
                             mainInterface.getCustomer(phoneNum),
                             temporaryBasket
                     );
-                } else {
-                    // TODO break out back to the UI
+                    orders CurOrder = mainInterface.getThisCustomerOrderSingle(phoneNum);
+                    double priceAfterTax = utils.calculateTax(0.06, CurOrder.getPrice());
+                    System.out.println("Your order is succesfully placed! Thank you for shopping at Secret Garden!");
+                    System.out.println("Total Price: RM" + priceAfterTax);
+                    System.out.println("Order ID:" + orderID);
                 }
-
+                else {
+                    System.out.println("Returning");
+                }
+            } while (checkOut != 1);
             }
 
             //CHOOSE PREORDER STARTS HERE EHRUOEHILFSDJKLFHDSILFHJLDSHJFLDSAKLJ
@@ -119,27 +141,35 @@ public class mainrunnable {
                 if (preorder == 1) {
                     ArrayList<bread> temporaryBasket = new ArrayList<>();
                     ArrayList<bread> itemsFromDB = mainInterface.getAllStandardItems();
+                    int checkOut2;
                     //TODO while loop starts here
-                    System.out.println("These are the pavan' avaliable for now");
+                    do {
+                    System.out.println("These are the breads in our bakery.");
                     for (bread item : itemsFromDB) {
-                        //TODO sysout all the details of the bread
+                        System.out.println("Bread:" + item.getName());
+                        System.out.println("Price:" + item.getPrice());
                     }
-                    System.out.println("Enter the thing u want to add");
+                    System.out.println("You can add these items to the cart.");
                     int itemIndex = secretScanner.nextInt();
-                    System.out.println("Enter the amount that u want to for this item"); //TODO replace "this item" with more descriptive text
+                    System.out.println("Enter the amount that u want to for this item."); //TODO replace "this item" with more descriptive text
                     int multiplier = secretScanner.nextInt();
 
                     for (int i = 0; i < multiplier; i++) {
                         temporaryBasket.add(itemsFromDB.get(itemIndex));
+                    }       
+                System.out.println("Theses thing are in the cart");
+
+                    for (int i = 0; i < multiplier; i++) {
+                        temporaryBasket.add(itemsFromDB.get(itemIndex));
                     }
+                    
+                System.out.println("Continue to checkout?");
+                System.out.println("1. Yes");
+                System.out.println("2. No");
+                checkOut2 = secretScanner.nextInt();
 
-                    // TODO until a break point
-                    System.out.println("Theses thing are in the cart");
-                    //TODO print the things out
-
-                    System.out.println("Are u sure to continue");
-                    //TODO if the orderAmount is > 100, give them a free gift, i guess just sysout you will be given a keychain or smth
-                    if (true) {
+                
+                    if (checkOut2 == 1) {
                         LocalDateTime now = LocalDateTime.now();
                         String orderID = mainInterface.placeOrders(
                                 mainInterface.getCustomer(phoneNum),
@@ -147,15 +177,30 @@ public class mainrunnable {
                                 temporaryBasket,
                                 null
                         );
-                    } else {
-                        // TODO break out back to the UI AND show order ID
+                        orders CurOrder = mainInterface.getThisCustomerOrderSingle(phoneNum);
+                        if (CurOrder.getPrice() > 100) {
+                                System.out.println("You are entitled to receive a free gift!");
+                        }
+                        
+                        double priceAfterTax = utils.calculateTax(0.06, CurOrder.getPrice());
+                        System.out.println("Your order is succesfully placed! Thank you for shopping at Secret Garden!");
+                        // TODO add calculate price here
+                        System.out.println("Total Price: RM" + priceAfterTax);
+                        System.out.println("Order ID:" + orderID);
                     }
+                    else {
+                        System.out.println("Returning...");
+                    }
+                } while (checkOut2 != 1);
                 }
+
                 if (preorder == 2) {
                     ArrayList<cake> cakeFromDB = mainInterface.getAllCakesItems();
                     System.out.println("These are the cakes available right now.");
                     for (cake item : cakeFromDB) {
-                        //displays all the cakes to ur heart's content
+                        //need an index here
+                        System.out.println("Cake:" + item.getName());
+                        System.out.println("Price:" + item.getPrice());
                     }
                     System.out.println("Which cake are you interested in?");
                     int cakeIndex = secretScanner.nextInt();
@@ -163,26 +208,29 @@ public class mainrunnable {
                             cakeFromDB.get(cakeIndex).getName(),
                             cakeFromDB.get(cakeIndex).getPrice()
                     );
-                    // TODO redesign UI
-                    System.out.println("Are you interested in our add-on services (custom design & custom candles)? [1 for YES || 2 for NO]");
-                    int addon = secretScanner.nextInt();
+                    
+                    int addon;
+                    do {
+                    System.out.println("Are you interested in our add-on services (custom design & custom candles)?");
+                    System.out.println("1. YES");
+                    System.out.println("2. NO");
+                    addon = secretScanner.nextInt();
                     if (addon == 1) {
                         // TODO UI
+                        System.out.println("Please describe the design of the cake. (Icing decoration, etc.)");
                         String customDesign = secretScanner.nextLine();
                         currentOrder.setCustomDesign(customDesign);
 
+                        System.out.println("Please describe the candle of the cake. (Number of candles, shape, colour, etc.)");
                         String customCandles = secretScanner.nextLine();
                         currentOrder.setCustomCandles(customCandles);
                     }
+                    
                     if (addon == 2) {
-                        // TODO until a break point
-                        System.out.println("Theses thing are in the cart");
                         //TODO print the things out
-
-                        System.out.println("Are u sure to continue");
+                        System.out.println("Continuing to checkout.");
                         ArrayList<cake> cakeOrder = new ArrayList<>();
                         cakeOrder.add(currentOrder);
-                        if (false) {
                             LocalDateTime now = LocalDateTime.now();
                             String orderID = mainInterface.placeOrders(
                                     mainInterface.getCustomer(phoneNum),
@@ -190,60 +238,95 @@ public class mainrunnable {
                                     null,
                                     cakeOrder
                             );
-                        } else {
-                            // TODO break out back to the UI AND show order ID
-                        }
-
+                        orders CurOrder = mainInterface.getThisCustomerOrderSingle(phoneNum);
+                        double priceAfterTax = utils.calculateTax(0.06, CurOrder.getPrice());
+                        System.out.println("Your order is succesfully placed! Thank you for shopping at Secret Garden!");
+                        System.out.println("Total Price: RM" + priceAfterTax);
+                        System.out.println("Order ID:" + orderID);
                     }
-
-                    if (addon == 3) {
-                        System.out.println("'look at this dude thinking he's funny entering another number','bruh ifkr, get a life bruh its 1 or 2.'");
+                    else {
+                        System.out.println("You have chosen an invalid response. Please try again.");
                     }
-                } else {
-                    System.out.println("'look at this dude thinking he's funny entering another number','bruh ifkr, get a life bruh its 1 or 2.'");
+                } while (addon != 1 && addon != 2);
                 }
-                    /*
-                    getcake and fill in secretGarden.items.cake styles and data
-                    put loop and a exit method here for the customer to put more than one item to cart
-                    calculate price
-                    return orderID and price upon successful order
-                    exit program
-                    */
-                //TODO ivan code insert here
             } else {
-                System.out.println("Do you not know how numbers work?");
-                //figure out loop on wrong input at a later time
+                System.out.println("You have chosen an invalid response. Please try again.");
             }
+        }while (choice2 != 1 && choice2 != 2);
+        
         } else if (choice1 == 2) {
-
 
             //TODO jun 2 sub methods
             //1 show 1 order, order number
             //2 show all orders, sort by 4 methods in enums
-
-            /*
-            if there are orders under customer -> getOrderStatus() under the customerID
-            if there are no orders under customer -> "there are currently no active orders"
-            loops back to choice 1
-            */
+            System.out.println("1. Would you like to see the status of one order?");
+            System.out.println("2. Would you like to see the status of all your order?");
+            int show = secretScanner.nextInt();
 
             //1
-            orders single = mainInterface.getThisCustomerOrderSingle("");
-
+            if (show == 1) {
+                String OrderID;
+                orders single = mainInterface.getThisCustomerOrderSingle(phoneNum);
+                do{
+                    System.out.println();
+                    System.out.println("Please enter the order ID of the order you want to check");
+                    OrderID = secretScanner.nextLine();
+                        if (OrderID == single.getUid()){
+                            System.out.println(single);
+                    }
+                        else {
+                            System.out.println("Your order is not found! Please try again.");
+                    }
+                }while (OrderID != single.getUid());
+            }
             //2
-            System.out.println("customer ID + Customer name");
-            ArrayList<orders> sorted = mainInterface.getThisCustomerOrder(phoneNum, sort.DATE);
-            //TODO print it out here;
-            // wait for ui
+          
+            if (show == 2) {
+                int sortChoice;
+            do {
+                System.out.println();
+                System.out.println("How do you want to sort your orders?");
+                System.out.println("1. Date");
+                System.out.println("2. Type");
+                System.out.println("3. Amount of items");
+                System.out.println("4. Order price");
+                sortChoice = secretScanner.nextInt();
+
+            if (sortChoice == 1) {
+                ArrayList<orders> sorted = mainInterface.getThisCustomerOrder(phoneNum, sort.DATE);
+                for (orders orderList : sorted) {
+                    System.out.println(orderList);
+                }
+            }
+            else if (sortChoice == 2) {
+                ArrayList<orders> sorted = mainInterface.getThisCustomerOrder(phoneNum, sort.TYPE);
+                for (orders orderList : sorted) {
+                    System.out.println(orderList);
+                }
+            }
+            else if (sortChoice == 3) {
+                ArrayList<orders> sorted = mainInterface.getThisCustomerOrder(phoneNum, sort.AMOUNT_OF_ITEMS);
+                for (orders orderList : sorted) {
+                    System.out.println(orderList);
+                }
+            }
+            else if (sortChoice == 4) {
+                ArrayList<orders> sorted = mainInterface.getThisCustomerOrder(phoneNum, sort.ORDER_PRICE);
+                for (orders orderList : sorted) {
+                    System.out.println(orderList);
+                }
+            }
+            }while (sortChoice != 1 && sortChoice != 2 && sortChoice !=3 && sortChoice != 4);
+        }
         } else if (choice1 == 3) {
             System.out.println("Thank you for shopping at Secret Garden!");
             //exit program
             secretScanner.close();
             System.exit(0);
         } else {
-            System.out.println("Do you not know how numbers work?");
-            //figure out loop on wrong input at a later time
+            System.out.println("You have chosen an invalid response. Please try again.");
         }
+    }while (choice1 != 1 && choice1 != 2 && choice1!= 3);
         secretScanner.close();
     }
 }
