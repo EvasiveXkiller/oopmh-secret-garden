@@ -30,7 +30,3 @@ application {
 run {
     standardInput = System.in
 }
-
-task another(type:Exec) {
-
-}
