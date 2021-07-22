@@ -11,8 +11,8 @@ secretGarden/interfaces/orderInterface.java
  secretGarden.interfaces.orderInterface
 secretGarden/interfaces/webInterface.java
  secretGarden.interfaces.webInterface
-mainrunnable/mainrunnable.java
- mainrunnable.mainrunnable
+secretGarden/orders.java
+ secretGarden.orders
 secretGarden/customer.java
  secretGarden.customer
 secretGarden/items/itemBase.java
@@ -29,5 +29,5 @@ secretGarden/items/cake.java
  secretGarden.items.cake
 secretGarden/database/pseudoDatabase.java
  secretGarden.database.pseudoDatabase
-secretGarden/orders.java
- secretGarden.orders
+mainrunnable/mainrunnable.java
+ mainrunnable.mainrunnable
