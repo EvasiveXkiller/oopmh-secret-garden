@@ -6,6 +6,11 @@ This Java program uses Gradle to manage its files and runtime information.
 Please do not execute this program manually, as it might cause problem during compilation
 or runtime. 
 
+The Java files are located here:
+```shell
+/src/main/java
+```
+
 The Instructions for specific OS are listed below.
 
 ### Windows
