@@ -11,23 +11,30 @@ The Instructions for specific OS are listed below.
 ### Windows
 Open up a Powershell window at the current directory and run the following command.
 
-```
+```shell
 .\gradlew.bat run
 ```
+
+If window is cmd.exe
+```shell
+./gradlew.bat run
+```
+
 ### Linux & Mac
 Open up a terminal session at the current directory and run the following commands.
 
-```
-// Take ownership of the file
+1. Take ownership of the file
+```shell
 sudo chown <user>: ./gradlew
-
-// Allow the shell file to be executed
-sudo chmod +x ./gradle
-
-// Run the Program
+```
+2. Allow the shell file to be executed
+```shell
+sudo chmod +x ./gradlew
+```
+3. Run the program
+```
 ./gradlew run
 ```
-<hr>
 
 ## Contributors
 
