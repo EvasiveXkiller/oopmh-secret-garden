@@ -163,6 +163,7 @@ public class mainrunnable {
 
                                         if (checkOut2 == 1) {
                                             // TODO i think u forgotten to add the date in the UI, preorder collection date cant be today
+                                            try {
                                             System.out.println("Enter a date collection for your pre-order. (dd/MM/yyy) eg. 08/08/2021");
                                             String scollectionDate;
                                             scollectionDate = secretScanner.nextLine();
@@ -183,6 +184,9 @@ public class mainrunnable {
                                             System.out.println("Total Price: RM" + priceAfterTax);
                                             System.out.println("Order ID:" + orderID);
                                             System.out.println("Collection Date:" + actualOrderDate);
+                                        } catch (Exception e) {
+                                            System.out.println("You have entered the wrong date format.");
+                                        }
                                         } else {
                                             System.out.println("Returning...");
                                         }
@@ -226,6 +230,7 @@ public class mainrunnable {
                                             ArrayList<cake> cakeOrder = new ArrayList<>();
                                             cakeOrder.add(currentOrder);
                                             // TODO date cannot be today
+                                            try {
                                             System.out.println("Enter a date collection for your pre-order. (dd/MM/yyy) eg. 08/08/2021");
                                             String scollectionDate;
                                             scollectionDate = secretScanner.nextLine();
@@ -242,6 +247,9 @@ public class mainrunnable {
                                             System.out.println("Total Price: RM" + priceAfterTax);
                                             System.out.println("Order ID:" + orderID);
                                             System.out.println("Collection Date:" + actualOrderDate);
+                                            }catch (Exception e) {
+                                                System.out.println("You have entered the wrong date format.");
+                                            }
                                         } else {
                                             System.out.println("You have chosen an invalid response. Please try again.");
                                         }
