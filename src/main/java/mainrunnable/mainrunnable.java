@@ -26,6 +26,9 @@ public class mainrunnable {
     public static void main(String[] args) {
         secretGarden mainInterface = new secretGarden();
         Scanner secretScanner = new Scanner(System.in);
+        int choice1;
+
+        do {
         System.out.println("Welcome to Secret Garden automated ordering system.");
         System.out.println("Please enter your phone number.");
         String phoneNum = secretScanner.nextLine();
@@ -37,13 +40,16 @@ public class mainrunnable {
             String customerName = secretScanner.nextLine();
             mainInterface.createNewCustomer(phoneNum, customerName);
         }
-        System.out.println(" ");
+
+        
+        do {
+        System.out.println("");
         System.out.println("Please choose one of the following:");
         System.out.println("1. Place order");
         System.out.println("2. Get status of your order");
         System.out.println("3. Exit program");
+        System.out.println("4. Log Out");
         // TODO Jun add a method to switch user.
-        int choice1;
 
         do {
             choice1 = secretScanner.nextInt();
@@ -59,6 +65,8 @@ public class mainrunnable {
                         ArrayList<bread> temporaryBasket = new ArrayList<>();
                         ArrayList<bread> itemsFromDB = mainInterface.getAllStandardItems();
                         //TODO while loop starts here !important
+                        int checkOut;
+                        do {
                         System.out.println("These are the breads avaliable in our bakery.");
                         for (int i = 0; i < itemsFromDB.size(); i++) {
                             //TODO Jun id added ,probably better formatting
@@ -66,9 +74,6 @@ public class mainrunnable {
                             System.out.println("Bread:" + itemsFromDB.get(i).getName());
                             System.out.println("Price:" + itemsFromDB.get(i).getPrice());
                         }
-
-                        int checkOut;
-                        do {
                             System.out.println("You can add these items to the cart.");
                             int itemIndex = secretScanner.nextInt();
                             // TODO check if the bread id actually exist, might product indexoutofbounds if not handled
@@ -80,7 +85,7 @@ public class mainrunnable {
                             }
 
 
-                            // TODO Jun only 1 bread can be added now, need a loop here to fix it
+                            // TODO Jun only 1 bread can be added now, need a loop here to fix it (should be solved)
                             System.out.println("Theses thing are in the cart.");
 
                             double temporaryPrice = 0;
@@ -142,13 +147,17 @@ public class mainrunnable {
                                     temporaryBasket.add(itemsFromDB.get(itemIndex));
                                 }
 
-                                // TODO Jun loop back, only can add 1 item into cart for now.
+                                // TODO Jun loop back, only can add 1 item into cart for now.(solved)
                                 System.out.println("Theses thing are in the cart");
 
-                                // TODO Juni think u missed the UI print here
+                                // TODO Juni think u missed the UI print here(solved)
+                                double temporaryPrice = 0;
                                 for (int i = 0; i < multiplier; i++) {
-                                    temporaryBasket.add(itemsFromDB.get(itemIndex));
+                                    System.out.println(temporaryBasket.get(i).getName());
+                                    System.out.println("Price:" + temporaryBasket.get(i).getPrice());
+                                    temporaryPrice += temporaryBasket.get(i).getPrice();
                                 }
+                                System.out.println(temporaryPrice);
 
                                 System.out.println("Continue to checkout?");
                                 System.out.println("1. Yes");
@@ -312,10 +321,15 @@ public class mainrunnable {
                 //exit program
                 secretScanner.close();
                 System.exit(0);
-            } else {
+            } else if (choice1 == 4) {
+                System.out.println("Logging out. Thank you for shopping at Secret Garden!");
+            }
+             else {
                 System.out.println("You have chosen an invalid response. Please try again.");
             }
-        } while (choice1 != 1 && choice1 != 2 && choice1 != 3);
+        } while (choice1 != 1 && choice1 != 2 && choice1 != 3 );
+    } while (choice1 != 3);
+} while (choice1 != 4);
         secretScanner.close();
     }
 }
