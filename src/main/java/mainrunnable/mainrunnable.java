@@ -163,7 +163,7 @@ public class mainrunnable {
 
                                         if (checkOut2 == 1) {
                                             // TODO i think u forgotten to add the date in the UI, preorder collection date cant be today
-                                            System.out.println("Enter a date collection for your pre-order. (d/MM/yyy)");
+                                            System.out.println("Enter a date collection for your pre-order. (dd/MM/yyy) eg. 08/08/2021");
                                             String scollectionDate;
                                             scollectionDate = secretScanner.nextLine();
                                             LocalDateTime actualOrderDate = stringDateToLocalDateTime(scollectionDate);
@@ -226,9 +226,13 @@ public class mainrunnable {
                                             ArrayList<cake> cakeOrder = new ArrayList<>();
                                             cakeOrder.add(currentOrder);
                                             // TODO date cannot be today
+                                            System.out.println("Enter a date collection for your pre-order. (dd/MM/yyy) eg. 08/08/2021");
+                                            String scollectionDate;
+                                            scollectionDate = secretScanner.nextLine();
+                                            LocalDateTime actualOrderDate = stringDateToLocalDateTime(scollectionDate);
                                             String orderID = mainInterface.placeOrders(
                                                     mainInterface.getCustomer(phoneNum),
-                                                    LocalDateTime.now(),
+                                                    actualOrderDate,
                                                     null,
                                                     cakeOrder
                                             );
@@ -237,6 +241,7 @@ public class mainrunnable {
                                             System.out.println("Your order is successfully placed! Thank you for shopping at Secret Garden!");
                                             System.out.println("Total Price: RM" + priceAfterTax);
                                             System.out.println("Order ID:" + orderID);
+                                            System.out.println("Collection Date:" + actualOrderDate);
                                         } else {
                                             System.out.println("You have chosen an invalid response. Please try again.");
                                         }
