@@ -5,6 +5,7 @@ import secretGarden.orders;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -80,7 +81,7 @@ public class utils {
     }
 
 
-    public static LocalDateTime stringDateToLocalDateTime(String stringDate) {
+    public static LocalDateTime stringDateToLocalDateTime(String stringDate) throws DateTimeParseException {
         String date = stringDate.replace("-", "/");
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
         dateTimeFormatter = dateTimeFormatter.withResolverStyle(ResolverStyle.STRICT);
