@@ -23,7 +23,7 @@ public interface webInterface {
      * @param itemCake       any cake items
      * @return the order ID
      */
-    String placeOrders(customer customer, LocalDate collectionDate, ArrayList<bread> itemBread, ArrayList<cake> itemCake);
+    String placeOrders(customer customer, LocalDateTime collectionDate, ArrayList<bread> itemBread, ArrayList<cake> itemCake);
 
     /**
      * Places a new order, Standard type

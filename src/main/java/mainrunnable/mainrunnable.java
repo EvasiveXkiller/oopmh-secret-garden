@@ -10,10 +10,13 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 import java.text.SimpleDateFormat;
+
+import static secretGarden.utils.utils.stringDateToLocalDateTime;
 
 /*
 DONE probably replace all scanners with nextline(), might produce numberformatexception if entered chars, and auto nextLine, see line 205
@@ -163,11 +166,10 @@ public class mainrunnable {
                                             System.out.println("Enter a date collection for your pre-order. (d/MM/yyy)");
                                             String scollectionDate;
                                             scollectionDate = secretScanner.nextLine();
-                                            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d/MM/yyyy");
-                                            LocalDate collectionDate = LocalDate.parse(scollectionDate,dtf);
+                                            LocalDateTime actualOrderDate = stringDateToLocalDateTime(scollectionDate);
                                             String orderID = mainInterface.placeOrders(
                                                     mainInterface.getCustomer(phoneNum),
-                                                    collectionDate,
+                                                    actualOrderDate,
                                                     temporaryBasket,
                                                     null
                                             );
@@ -180,7 +182,7 @@ public class mainrunnable {
                                             System.out.println("Your order is succesfully placed! Thank you for shopping at Secret Garden!");
                                             System.out.println("Total Price: RM" + priceAfterTax);
                                             System.out.println("Order ID:" + orderID);
-                                            System.out.println("Collection Date:" + collectionDate);
+                                            System.out.println("Collection Date:" + actualOrderDate);
                                         } else {
                                             System.out.println("Returning...");
                                         }
@@ -226,7 +228,7 @@ public class mainrunnable {
                                             // TODO date cannot be today
                                             String orderID = mainInterface.placeOrders(
                                                     mainInterface.getCustomer(phoneNum),
-                                                    LocalDate.now(),
+                                                    LocalDateTime.now(),
                                                     null,
                                                     cakeOrder
                                             );

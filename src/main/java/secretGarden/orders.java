@@ -38,7 +38,7 @@ public class orders implements orderInterface {
         this.uid = UUID.randomUUID().toString();
         this.orderType = orderType;
         this.collectionDate = collectionDate;
-        this.itemBread = itemBread == null ? new ArrayList<>() : this.itemBread;
+        this.itemBread = itemBread == null ? new ArrayList<>() : itemBread;
         this.itemCake = itemCake == null ? new ArrayList<>() : itemCake;
         this.totalPrice = this.calculateTotal();
         this.calculateMembershipFeatures(true);

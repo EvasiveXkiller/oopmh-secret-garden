@@ -2,6 +2,10 @@ package secretGarden.utils;
 
 import secretGarden.orders;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -73,6 +77,16 @@ public class utils {
     public static ArrayList<orders> sortOrderByType(ArrayList<orders> orders) {
         orders.sort(Comparator.comparing(secretGarden.orders::getOrderType));
         return orders;
+    }
+
+
+    public static LocalDateTime stringDateToLocalDateTime(String stringDate) {
+        String date = stringDate.replace("-", "/");
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+        dateTimeFormatter = dateTimeFormatter.withResolverStyle(ResolverStyle.STRICT);
+        LocalDate unparsedTime = LocalDate.parse(date, dateTimeFormatter);
+        LocalDateTime convertedDate = unparsedTime.atStartOfDay();
+        return convertedDate;
     }
 
 }
