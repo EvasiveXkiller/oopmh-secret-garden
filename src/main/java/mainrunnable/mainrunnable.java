@@ -43,7 +43,7 @@ public class mainrunnable {
 
 
             do {
-                System.out.println("");
+                System.out.println();
                 System.out.println("Please choose one of the following:");
                 System.out.println("1. Place order");
                 System.out.println("2. Get status of your order");
@@ -52,7 +52,7 @@ public class mainrunnable {
                 // TODO Jun add a method to switch user.
 
                 do {
-                    choice1 = secretScanner.nextInt();
+                    choice1 = Integer.parseInt(secretScanner.nextLine());
                     if (choice1 == 1) {
                         System.out.println("What type of order would you like to place?");
                         System.out.println("1. Standard");
@@ -60,7 +60,7 @@ public class mainrunnable {
                         int choice2;
 
                         do {
-                            choice2 = secretScanner.nextInt();
+                            choice2 = Integer.parseInt(secretScanner.nextLine());
                             if (choice2 == 1) {
                                 ArrayList<bread> temporaryBasket = new ArrayList<>();
                                 ArrayList<bread> itemsFromDB = mainInterface.getAllStandardItems();
@@ -75,10 +75,10 @@ public class mainrunnable {
                                         System.out.println("Price:" + itemsFromDB.get(i).getPrice());
                                     }
                                     System.out.println("You can add these items to the cart.");
-                                    int itemIndex = secretScanner.nextInt();
+                                    int itemIndex = Integer.parseInt(secretScanner.nextLine());
                                     // TODO check if the bread id actually exist, might product indexoutofbounds if not handled
                                     System.out.println("Enter the amount that u want to for this item."); //TODO replace "this item" with more descriptive text
-                                    int multiplier = secretScanner.nextInt();
+                                    int multiplier = Integer.parseInt(secretScanner.nextLine());
 
                                     for (int i = 0; i < multiplier; i++) {
                                         temporaryBasket.add(itemsFromDB.get(itemIndex));
@@ -101,7 +101,7 @@ public class mainrunnable {
                                     System.out.println("Continue to checkout?");
                                     System.out.println("1. Yes");
                                     System.out.println("2. No");
-                                    checkOut = secretScanner.nextInt();
+                                    checkOut = Integer.parseInt(secretScanner.nextLine());
 
                                     if (checkOut == 1) {
                                         String orderID = mainInterface.placeOrders(
@@ -123,7 +123,7 @@ public class mainrunnable {
                                         "Are you interested in our selection of cakes or breads? " +
                                         "1 for Bread, " +
                                         "2 for Cakes");
-                                int preorder = secretScanner.nextInt();
+                                int preorder = Integer.parseInt(secretScanner.nextLine());
                                 if (preorder == 1) {
                                     ArrayList<bread> temporaryBasket = new ArrayList<>();
                                     ArrayList<bread> itemsFromDB = mainInterface.getAllStandardItems();
@@ -138,9 +138,9 @@ public class mainrunnable {
                                             System.out.println("Price:" + itemsFromDB.get(i).getPrice());
                                         }
                                         System.out.println("You can add these items to the cart.");
-                                        int itemIndex = secretScanner.nextInt();
+                                        int itemIndex = Integer.parseInt(secretScanner.nextLine());
                                         System.out.println("Enter the amount that u want to for this item.");
-                                        int multiplier = secretScanner.nextInt();
+                                        int multiplier = Integer.parseInt(secretScanner.nextLine());
 
                                         // TODO check if the bread id actually exist, might product indexoutofbounds if not handled
                                         for (int i = 0; i < multiplier; i++) {
@@ -162,7 +162,7 @@ public class mainrunnable {
                                         System.out.println("Continue to checkout?");
                                         System.out.println("1. Yes");
                                         System.out.println("2. No");
-                                        checkOut2 = secretScanner.nextInt();
+                                        checkOut2 = Integer.parseInt(secretScanner.nextLine());
 
                                         if (checkOut2 == 1) {
                                             // TODO i think u forgotten to add the date in the UI, preorder collection date cant be today
@@ -200,7 +200,7 @@ public class mainrunnable {
                                         System.out.println("Price:" + cakeFromDB.get(i).getPrice());
                                     }
                                     System.out.println("Which cake are you interested in?");
-                                    int cakeIndex = secretScanner.nextInt();
+                                    int cakeIndex = Integer.parseInt(secretScanner.nextLine());
                                     cake currentOrder = new cake(
                                             cakeFromDB.get(cakeIndex).getName(),
                                             cakeFromDB.get(cakeIndex).getPrice()
@@ -211,7 +211,7 @@ public class mainrunnable {
                                         System.out.println("Are you interested in our add-on services (custom design & custom candles)?");
                                         System.out.println("1. YES");
                                         System.out.println("2. NO");
-                                        addon = secretScanner.nextInt();
+                                        addon = Integer.parseInt(secretScanner.nextLine());
                                         if (addon == 1) {
                                             // TODO UI
                                             System.out.println("Please describe the design of the cake. (Icing decoration, etc.)");
@@ -263,7 +263,7 @@ public class mainrunnable {
                         //2 show all orders, sort by 4 methods in enums
                         System.out.println("1. Would you like to see the status of one order?");
                         System.out.println("2. Would you like to see the status of all your order?");
-                        int show = secretScanner.nextInt();
+                        int show = Integer.parseInt(secretScanner.nextLine());
 
                         //1
                         if (show == 1) {
@@ -291,7 +291,7 @@ public class mainrunnable {
                                 System.out.println("2. Type");
                                 System.out.println("3. Amount of items");
                                 System.out.println("4. Order price");
-                                sortChoice = secretScanner.nextInt();
+                                sortChoice = Integer.parseInt(secretScanner.nextLine());
 
                                 if (sortChoice == 1) {
                                     ArrayList<orders> sorted = mainInterface.getThisCustomerOrder(phoneNum, sort.DATE);
@@ -327,7 +327,7 @@ public class mainrunnable {
                     } else {
                         System.out.println("You have chosen an invalid response. Please try again.");
                     }
-                } while (choice1 != 1 && choice1 != 2 && choice1 != 3);
+                } while (choice1 != 1 && choice1 != 2);
             } while (choice1 != 4);
         } while (true);
     }
