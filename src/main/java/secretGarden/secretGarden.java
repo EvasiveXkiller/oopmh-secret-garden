@@ -10,6 +10,7 @@ import secretGarden.items.cake;
 import secretGarden.utils.utils;
 
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Random;
@@ -33,8 +34,8 @@ public class secretGarden implements webInterface {
      * @param itemCake       any cake items
      * @return the order ID
      */
-    public String placeOrders(customer customer, LocalDateTime collectionDate, ArrayList<bread> itemBread, ArrayList<cake> itemCake) {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    public String placeOrders(customer customer, LocalDate collectionDate, ArrayList<bread> itemBread, ArrayList<cake> itemCake) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d/MM/yyyy");
         orders temporary = new orders(
                 customer,
                 order.PRE_ORDER,
