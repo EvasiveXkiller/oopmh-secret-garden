@@ -22,7 +22,7 @@ Open up a Powershell window at the current directory and run the following comma
 
 If window is cmd.exe
 ```shell
-./gradlew.bat run
+gradlew.bat run
 ```
 
 ### Linux & Mac
@@ -31,6 +31,10 @@ Open up a terminal session at the current directory and run the following comman
 1. Take ownership of the file
 ```shell
 sudo chown <user>: ./gradlew
+
+# Example, if username is "ivan"
+
+sudo chown ivan: ./gradlew
 ```
 2. Allow the shell file to be executed
 ```shell
