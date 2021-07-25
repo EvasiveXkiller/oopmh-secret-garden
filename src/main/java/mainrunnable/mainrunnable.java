@@ -218,7 +218,7 @@ public class mainrunnable {
                                     for (int i = 0; i < cakeFromDB.size(); i++) {
                                         System.out.println("#ID " + i);
                                         System.out.println("Cake:" + cakeFromDB.get(i).getName());
-                                        System.out.println("Price:" + cakeFromDB.get(i).getPrice());
+                                        System.out.println("Price: RM " + cakeFromDB.get(i).getPrice());
                                         System.out.println("");
                                     }
                                     System.out.println("");
