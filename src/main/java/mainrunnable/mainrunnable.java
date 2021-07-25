@@ -38,12 +38,14 @@ public class mainrunnable {
 
         do {
             System.out.println("Welcome to Secret Garden automated ordering system.");
+            System.out.println("");
             System.out.println("Please enter your phone number.");
             String phoneNum = secretScanner.nextLine();
 
             if (mainInterface.checkIfCustomerExists(phoneNum)) {
                 System.out.println("User found in database, continuing.");
             } else {
+            	System.out.println("");
                 System.out.println("Your phone number is not found! Please enter your name to create an account.");
                 String customerName = secretScanner.nextLine();
                 mainInterface.createNewCustomer(phoneNum, customerName);
@@ -53,6 +55,7 @@ public class mainrunnable {
             do {
                 System.out.println();
                 System.out.println("Please choose one of the following:");
+                System.out.println("");
                 System.out.println("1. Place order");
                 System.out.println("2. Get status of your order");
                 System.out.println("3. Exit program");
@@ -61,6 +64,7 @@ public class mainrunnable {
                 do {
                     choice1 = Integer.parseInt(secretScanner.nextLine());
                     if (choice1 == 1) {
+                    	System.out.println("");
                         System.out.println("What type of order would you like to place?");
                         System.out.println("1. Standard");
                         System.out.println("2. Pre-Order");
@@ -73,33 +77,38 @@ public class mainrunnable {
                                 ArrayList<bread> itemsFromDB = mainInterface.getAllStandardItems();
                                 int checkOut;
                                 do {
+                                	System.out.println("");
                                     System.out.println("These are the breads avaliable in our bakery.");
+                                    System.out.println("");
                                     for (int i = 0; i < itemsFromDB.size(); i++) {
                                         //TODO Jun id added ,probably better formatting
                                         System.out.println("#ID " + i);
-                                        System.out.println("Bread:" + itemsFromDB.get(i).getName());
-                                        System.out.println("Price:" + itemsFromDB.get(i).getPrice());
+                                        System.out.println("Bread: " + itemsFromDB.get(i).getName());
+                                        System.out.println("Price: " + itemsFromDB.get(i).getPrice());
+                                        System.out.println("");
                                     }
-                                    System.out.println("You can add these items to the cart.");
+                                    System.out.println("You can add these items to the cart. (Please insert the ID)");
                                     int itemIndex = Integer.parseInt(secretScanner.nextLine());
                                     // TODO check if the bread id actually exist, might product indexoutofbounds if not handled
-                                    System.out.println("Enter the amount that u want to for this item."); //TODO replace "this item" with more descriptive text
+                                    System.out.println("");
+                                    System.out.println("Enter the amount that u want."); //TODO replace "this item" with more descriptive text
                                     int multiplier = Integer.parseInt(secretScanner.nextLine());
 
                                     for (int i = 0; i < multiplier; i++) {
                                         temporaryBasket.add(itemsFromDB.get(itemIndex));
                                     }
-
-                                    System.out.println("Theses thing are in the cart.");
-
+                                    System.out.println("");
+                                    System.out.println("These are the things that are in the cart.");
+                                    System.out.println("");
                                     double temporaryPrice = 0;
-                                    for (int i = 0; i < temporaryBasket.size(); i++) {
+                                    for (int i = 0; i < temporaryBasket.size(); i++) { 
                                         System.out.println(temporaryBasket.get(i).getName());
-                                        System.out.println("Price:" + temporaryBasket.get(i).getPrice());
+                                        System.out.println("Price: RM " + temporaryBasket.get(i).getPrice());
+                                        System.out.println("");
                                         temporaryPrice += temporaryBasket.get(i).getPrice();
                                     }
-                                    System.out.println(temporaryPrice);
-
+                                    System.out.println("Total RM " + temporaryPrice);
+                                    System.out.println("");
                                     System.out.println("Continue to checkout?");
                                     System.out.println("1. Yes");
                                     System.out.println("2. No");
@@ -113,10 +122,13 @@ public class mainrunnable {
 
                                         orders CurOrder = mainInterface.getThisCustomerOrderSingle(orderID);
                                         double priceAfterTax = utils.calculateTax(0.06, CurOrder.getTotalPrice());
+                                        System.out.println("");
                                         System.out.println("Your order is succesfully placed! Thank you for shopping at Secret Garden!");
-                                        System.out.println("Total Price: RM" + priceAfterTax);
-                                        System.out.println("Order ID:" + orderID);
+                                        System.out.println("");
+                                        System.out.println("Total Price: RM " + priceAfterTax);
+                                        System.out.println("Order ID: " + orderID);
                                     } else {
+                                    	System.out.println("");
                                         System.out.println("Returning");
                                     }
                                 } while (checkOut != 1);
@@ -131,31 +143,38 @@ public class mainrunnable {
                                     ArrayList<bread> itemsFromDB = mainInterface.getAllStandardItems();
                                     int checkOut2;
                                     do {
-                                        System.out.println("These are the breads in our bakery.");
+                                    	System.out.println("");
+                                        System.out.println("These are the breads that are available in our bakery.");
+                                        System.out.println("");
                                         for (int i = 0; i < itemsFromDB.size(); i++) {
                                             System.out.println("#ID " + i);
-                                            System.out.println("Bread:" + itemsFromDB.get(i).getName());
-                                            System.out.println("Price:" + itemsFromDB.get(i).getPrice());
+                                            System.out.println("Bread: " + itemsFromDB.get(i).getName());
+                                            System.out.println("Price: " + itemsFromDB.get(i).getPrice());
+                                            System.out.println("");
                                         }
-                                        System.out.println("You can add these items to the cart.");
+                                        System.out.println("You can add these items to the cart. (Please insert the ID)");
                                         int itemIndex = Integer.parseInt(secretScanner.nextLine());
-                                        System.out.println("Enter the amount that u want to for this item.");
+                                        System.out.println("");
+                                        System.out.println("Enter the amount that u want.");
                                         int multiplier = Integer.parseInt(secretScanner.nextLine());
 
                                         // TODO check if the bread id actually exist, might product indexoutofbounds if not handled
                                         for (int i = 0; i < multiplier; i++) {
                                             temporaryBasket.add(itemsFromDB.get(itemIndex));
                                         }
-                                        System.out.println("Theses thing are in the cart");
+                                        System.out.println("");
+                                        System.out.println("These are the things that are in the cart.");
+                                        System.out.println("");
 
                                         double temporaryPrice = 0;
                                         for (int i = 0; i < multiplier; i++) {
                                             System.out.println(temporaryBasket.get(i).getName());
-                                            System.out.println("Price:" + temporaryBasket.get(i).getPrice());
+                                            System.out.println("Price: RM " + temporaryBasket.get(i).getPrice());
+                                            System.out.println("");
                                             temporaryPrice += temporaryBasket.get(i).getPrice();
                                         }
-                                        System.out.println(temporaryPrice);
-
+                                        System.out.println("Total RM " + temporaryPrice);
+                                        System.out.println("");
                                         System.out.println("Continue to checkout?");
                                         System.out.println("1. Yes");
                                         System.out.println("2. No");
@@ -163,7 +182,7 @@ public class mainrunnable {
 
                                         if (checkOut2 == 1) {
                                             // TODO i think u forgotten to add the date in the UI, preorder collection date cant be today
-                                            try {
+                                        	System.out.println("");
                                             System.out.println("Enter a date collection for your pre-order. (dd/MM/yyy) eg. 08/08/2021");
                                             String scollectionDate;
                                             scollectionDate = secretScanner.nextLine();
@@ -180,13 +199,12 @@ public class mainrunnable {
                                             }
 
                                             double priceAfterTax = utils.calculateTax(0.06, CurOrder.getTotalPrice());
+                                            System.out.println("");
                                             System.out.println("Your order is succesfully placed! Thank you for shopping at Secret Garden!");
-                                            System.out.println("Total Price: RM" + priceAfterTax);
-                                            System.out.println("Order ID:" + orderID);
-                                            System.out.println("Collection Date:" + actualOrderDate);
-                                        } catch (Exception e) {
-                                            System.out.println("You have entered the wrong date format.");
-                                        }
+                                            System.out.println("");
+                                            System.out.println("Total Price: RM " + priceAfterTax);
+                                            System.out.println("Order ID: " + orderID);
+                                            System.out.println("Collection Date: " + actualOrderDate);
                                         } else {
                                             System.out.println("Returning...");
                                         }
@@ -195,13 +213,16 @@ public class mainrunnable {
 
                                 if (preorder == 2) {
                                     ArrayList<cake> cakeFromDB = mainInterface.getAllCakesItems();
-                                    System.out.println("These are the cakes available right now.");
+                                    System.out.println("These are the cakes available currently.");
+                                    System.out.println("");
                                     for (int i = 0; i < cakeFromDB.size(); i++) {
                                         System.out.println("#ID " + i);
                                         System.out.println("Cake:" + cakeFromDB.get(i).getName());
                                         System.out.println("Price:" + cakeFromDB.get(i).getPrice());
+                                        System.out.println("");
                                     }
-                                    System.out.println("Which cake are you interested in?");
+                                    System.out.println("");
+                                    System.out.println("Which cake are you interested in? (Please insert the ID)");
                                     int cakeIndex = Integer.parseInt(secretScanner.nextLine());
                                     // TODO check if cake actually exists
                                     cake currentOrder = new cake(
@@ -211,26 +232,31 @@ public class mainrunnable {
 
                                     int addon;
                                     do {
+                                    	System.out.println("");
                                         System.out.println("Are you interested in our add-on services (custom design & custom candles)?");
+                                        System.out.println("");
                                         System.out.println("1. YES");
                                         System.out.println("2. NO");
                                         addon = Integer.parseInt(secretScanner.nextLine());
                                         if (addon == 1) {
+                                        	System.out.println("");
                                             System.out.println("Please describe the design of the cake. (Icing decoration, etc.)");
                                             String customDesign = secretScanner.nextLine();
                                             currentOrder.setCustomDesign(customDesign);
 
+                                            System.out.println("");
                                             System.out.println("Please describe the candle of the cake. (Number of candles, shape, colour, etc.)");
                                             String customCandles = secretScanner.nextLine();
                                             currentOrder.setCustomCandles(customCandles);
                                         }
 
                                         if (addon == 2) {
+                                        	System.out.println("");
                                             System.out.println("Continuing to checkout.");
                                             ArrayList<cake> cakeOrder = new ArrayList<>();
                                             cakeOrder.add(currentOrder);
                                             // TODO date cannot be today
-                                            try {
+                                            System.out.println("");
                                             System.out.println("Enter a date collection for your pre-order. (dd/MM/yyy) eg. 08/08/2021");
                                             String scollectionDate;
                                             scollectionDate = secretScanner.nextLine();
@@ -243,38 +269,43 @@ public class mainrunnable {
                                             );
                                             orders CurOrder = mainInterface.getThisCustomerOrderSingle(orderID);
                                             double priceAfterTax = utils.calculateTax(0.06, CurOrder.getTotalPrice());
+                                            System.out.println("");
                                             System.out.println("Your order is successfully placed! Thank you for shopping at Secret Garden!");
-                                            System.out.println("Total Price: RM" + priceAfterTax);
-                                            System.out.println("Order ID:" + orderID);
-                                            System.out.println("Collection Date:" + actualOrderDate);
-                                            }catch (Exception e) {
-                                                System.out.println("You have entered the wrong date format.");
-                                            }
+                                            System.out.println("");
+                                            System.out.println("Total Price: RM " + priceAfterTax);
+                                            System.out.println("Order ID: " + orderID);
+                                            System.out.println("Collection Date: " + actualOrderDate);
                                         } else {
+                                        	System.out.println("");
                                             System.out.println("You have chosen an invalid response. Please try again.");
                                         }
                                     } while (addon != 1 && addon != 2);
                                 }
                             } else {
+                            	System.out.println("");
                                 System.out.println("You have chosen an invalid response. Please try again.");
                             }
                         } while (choice2 != 1 && choice2 != 2);
 
                     } else if (choice1 == 2) {
-                        System.out.println("1. Would you like to see the status of one order?");
-                        System.out.println("2. Would you like to see the status of all your order?");
+                    	System.out.println("");
+                        System.out.println("1 - Would you like to see the status of one order?");
+                        System.out.println("2 - Would you like to see the status of all your order?");
                         int show = Integer.parseInt(secretScanner.nextLine());
-
+                      
+                                               
                         if (show == 1) {
                             String OrderID;
                             System.out.println();
-                            System.out.println("Please enter the order ID of the order you want to check");
+                            System.out.println("Please enter the order ID of the order that you want to check.");
                             OrderID = secretScanner.nextLine();
                             orders single = mainInterface.getThisCustomerOrderSingle(OrderID);
                             if (single == null) {
+                            	System.out.println("");
                                 System.out.println("Order Not Found!");
                             } else {
-                                System.out.println(single);
+                            	System.out.println("");
+                            	System.out.println(single);
                             }
                         }
 
@@ -282,9 +313,11 @@ public class mainrunnable {
                             int sortChoice;
                             do {
                                 System.out.println();
-                                System.out.println("How do you want to sort your orders?");
-                                System.out.println("1. Date");
-                                System.out.println("2. Type");
+                                System.out.println("");
+                                System.out.println("How would you like to sort your orders?");
+                                System.out.println("");
+                                System.out.println("1. Order Date");
+                                System.out.println("2. Order Type");
                                 System.out.println("3. Amount of items");
                                 System.out.println("4. Order price");
                                 sortChoice = Integer.parseInt(secretScanner.nextLine());
@@ -310,20 +343,29 @@ public class mainrunnable {
                                         System.out.println(orderList);
                                     }
                                 }
+                                
                             } while (sortChoice != 1 && sortChoice != 2 && sortChoice != 3 && sortChoice != 4);
                         }
+                        
                     } else if (choice1 == 3) {
+                    	System.out.println("");
                         System.out.println("Thank you for shopping at Secret Garden!");
                         secretScanner.close();
                         System.exit(0);
                     } else if (choice1 == 4) {
+                    	System.out.println("");
                         System.out.println("Logging out. Thank you for shopping at Secret Garden!");
                         break;
                     } else {
+                    	System.out.println("");
                         System.out.println("You have chosen an invalid response. Please try again.");
                     }
+                    
                 } while (choice1 != 1 && choice1 != 2);
+                
             } while (choice1 != 4);
+            
         } while (true);
+        
     }
 }

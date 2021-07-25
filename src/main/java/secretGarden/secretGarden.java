@@ -22,7 +22,7 @@ public class secretGarden implements webInterface {
      * Constructor, calls the dummy data generator immediately
      */
     public secretGarden() {
-        this.generateFillData(50);
+        this.generateFillData();
     }
 
     /**
@@ -190,17 +190,16 @@ public class secretGarden implements webInterface {
      *
      * @param amountOfItemsToGenerate The amount of test data to insert into the database
      */
-    public void generateFillData(int amountOfItemsToGenerate) {
+    public void generateFillData() {
         ArrayList<cake> tempAllCake = new ArrayList<>();
         ArrayList<bread> tempAllBread = new ArrayList<>();
-        for (int i = 0; i < amountOfItemsToGenerate; i++) {
-            Random random = new Random();
-            bread temporary = new bread(UUID.randomUUID().toString(),
-                    // price might lose control but whatever
-                    random.nextInt(10) + (double) Math.round(random.nextDouble() * 100.0) / 100.0
-            );
-            tempAllBread.add(temporary);
-        }
+        
+        tempAllBread.add(new bread("Ciabatta Bread", 15));
+        tempAllBread.add(new bread("Banana Bread", 7.5));
+        tempAllBread.add(new bread("Baguette Bread", 18));
+        tempAllBread.add(new bread("Wheat Bread", 12));
+        tempAllBread.add(new bread("Hot-Dog Bread", 8.5));
+            
         tempAllCake.add(new cake("VANILLA", 77));
         tempAllCake.add(new cake("TIRAMISU", 770));
         tempAllCake.add(new cake("CHOCOLATE", 7700));
