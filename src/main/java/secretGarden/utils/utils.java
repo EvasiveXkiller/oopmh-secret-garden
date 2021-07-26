@@ -23,9 +23,9 @@ public class utils {
     }
 
     /**
-     * Sort order by date
-     * @param orders
-     * @return
+     * Sort order by date 
+     * @param orders List of all orders
+     * @return The list of all orders that are sorted by date
      */
     public static ArrayList<orders> sortOrderByDate(ArrayList<orders> orders) {
         orders.sort((order1, order2) -> {
@@ -66,10 +66,10 @@ public class utils {
     }
 
     /**
-     * Sort order by items alphabetically
+     * Sort order in alphabetical order
      * 
-     * @param orders
-     * @return
+     * @param orders List of all orders
+     * @return The list of all orders that are sorted by alphabetically
      */
     public static ArrayList<orders> sortOrderByItems(ArrayList<orders> orders) {
         orders.sort(Comparator.comparingInt(secretGarden.orders::getItemCount));
@@ -77,10 +77,10 @@ public class utils {
     }
 
     /**
-     * Sort order by items in alphabetical order
+     * Sort order by price from low to high
      * 
-     * @param orders
-     * @return
+     * @param orders The list of all orders
+     * @return The list of all orders that are sorted by price from low to high
      */
     public static ArrayList<orders> sortOrderByPrice(ArrayList<orders> orders) {
         orders.sort(Comparator.comparingDouble(secretGarden.orders::getTotalPrice));
@@ -88,9 +88,9 @@ public class utils {
     }
 
     /**
-     * Sort order by order types
-     * @param orders
-     * @return
+     * Sort order by order types (standard/pre-order)
+     * @param orders The list of all orders
+     * @return The list of all orders that are sorted by order types (standard/pre-order)
      */
     public static ArrayList<orders> sortOrderByType(ArrayList<orders> orders) {
         orders.sort(Comparator.comparing(secretGarden.orders::getOrderType));
@@ -98,9 +98,9 @@ public class utils {
     }
 
     /**
-     * covert string to LocalDateTime
-     * @param stringDate
-     * @return
+     * Converts the date from string to LocalDateTime
+     * @param stringDate The date in String data type
+     * @return The date in LocalDateTime
      * @throws DateTimeParseException
      */
     public static LocalDateTime stringDateToLocalDateTime(String stringDate) throws DateTimeParseException {

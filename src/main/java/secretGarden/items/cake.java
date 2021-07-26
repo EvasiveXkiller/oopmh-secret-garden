@@ -17,8 +17,8 @@ public class cake extends itemBase {
     }
 
     /**
-     * Gets the name of cake
-     * @return
+     * Gets the name of the cake
+     * @return The name of the cake
      */
     public String getName() {
         return name;
@@ -26,31 +26,31 @@ public class cake extends itemBase {
 
     /**
      * Set name of cake
-     * @return
+     * @param name The name of bread
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * Get price of cake
-     * @return
+     * Get price of the product
+     * @return The price of the product
      */
     public double getPrice() {
         return price;
     }
 
     /**
-     * Set price of cake
-     * @return
+     * Set price of the productcake
+     * @param price The price of the product
      */
     public void setPrice(double price) {
         this.price = price;
     }
 
     /**
-     * Get custom design of cake
-     * @return
+     * Get custom design of the cake
+     * @return The custom design of the cake
      */
     public String getCustomDesign() {
         return customDesign;
@@ -58,7 +58,7 @@ public class cake extends itemBase {
 
     /**
      * Set custom design of cake
-     * @param customDesign
+     * @param customDesign The custom design of the cake
      */
     public void setCustomDesign(String customDesign) {
         this.customDesign = customDesign;
@@ -66,7 +66,7 @@ public class cake extends itemBase {
 
     /**
      * Get custom candles of cake
-     * @return
+     * @return The custom candles of cake
      */
     public String getCustomCandles() {
         return customCandles;
@@ -74,7 +74,7 @@ public class cake extends itemBase {
 
     /**
      * Set custom candles of cake
-     * @param customCandles
+     * @param customCandles The custom candles of cake
      */
     public void setCustomCandles(String customCandles) {
         this.customCandles = customCandles;
