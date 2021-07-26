@@ -2,6 +2,9 @@ package secretGarden.interfaces;
 
 import java.time.LocalDateTime;
 
+/**
+ * Interface for customer class
+ */
 public interface customerInterface {
     /**
      * Sets if the user can be premium

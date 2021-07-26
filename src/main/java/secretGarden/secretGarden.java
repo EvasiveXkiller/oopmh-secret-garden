@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.UUID;
 
+/**
+ * Secret Garden Main API for online use.
+ */
 public class secretGarden implements webInterface {
 
     /**
@@ -172,15 +175,26 @@ public class secretGarden implements webInterface {
         return order;
     }
 
-    // getters and setter
+    /**
+     * Gets all the orders
+     * @return A list of orders
+     */
     private ArrayList<orders> getAllOrders() {
         return pseudoDatabase.getAllOrders();
     }
 
+    /**
+     * Gets all standard items from the store
+     * @return The list of the items that are considered as standard, usually breads
+     */
     public ArrayList<bread> getAllStandardItems() {
         return pseudoDatabase.getAllBreads();
     }
 
+    /**
+     * Gets all the cakes from the store
+     * @return The list of cakes that are available
+     */
     public ArrayList<cake> getAllCakesItems() {
         return pseudoDatabase.getAllCakes();
     }
