@@ -7,6 +7,11 @@ public class bread extends itemBase {
     private String name;
     private double price;
 
+    /**
+     * Constructor for class
+     * @param name The name of the bread
+     * @param price The price of the bread
+     */
     public bread(String name, double price) {
         this.name = name;
         this.price = price;
