@@ -133,7 +133,6 @@ public class secretGarden implements webInterface {
         }
         // we have all the customers orders.
         switch (sortMethod) {
-            //TODO sort the thing
             case DATE:
                 filteredOrderSort = utils.sortOrderByDate(filteredOrdersUnsort);
                 break;

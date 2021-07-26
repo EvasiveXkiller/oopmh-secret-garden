@@ -32,7 +32,6 @@ public class utils {
      */
     public static ArrayList<orders> sortOrderByDate(ArrayList<orders> orders) {
         orders.sort((order1, order2) -> {
-            // TODO Auto-generated method stub
             String date1 = order1.getCollectionDate();
             String date2 = order2.getCollectionDate();
 

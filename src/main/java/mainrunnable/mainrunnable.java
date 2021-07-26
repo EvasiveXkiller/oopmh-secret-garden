@@ -12,18 +12,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import static secretGarden.utils.utils.stringDateToLocalDateTime;
-
-/*
-DONE probably replace all scanners with nextline(), might produce numberformatexception if entered chars, and auto nextLine, see line 205
-DONE switching of user
-DONE make bread price more sensible
-
-
-TODO check if bread actually exists
-TODO Better UI at bread display and show order things
-TODO more testing
- */
-
 /**
  * Example of implementation of the code
  */
@@ -87,7 +75,6 @@ public class mainrunnable {
                                     System.out.println();
                                     do {
                                         for (int i = 1; i < itemsFromDB.size(); i++) {
-                                            //TODO Jun id added ,probably better formatting
                                             System.out.println("#ID " + i);
                                             System.out.println("Bread: " + itemsFromDB.get(i).getName());
                                             System.out.println("Price: " + itemsFromDB.get(i).getPrice());
@@ -102,9 +89,8 @@ public class mainrunnable {
                                         }
                                     } while (itemIndex < 1 || itemIndex > 5);
 
-                                    // TODO check if the bread id actually exist, might product indexoutofbounds if not handled
                                     System.out.println();
-                                    System.out.println("Enter the amount that u want."); //TODO replace "this item" with more descriptive text
+                                    System.out.println("Enter the amount that u want.");
                                     int multiplier = Integer.parseInt(secretScanner.nextLine());
 
                                     for (int i = 0; i < multiplier; i++) {
@@ -178,8 +164,6 @@ public class mainrunnable {
                                         System.out.println("Enter the amount that u want.");
                                         int multiplier = Integer.parseInt(secretScanner.nextLine());
 
-
-                                        // TODO check if the bread id actually exist, might product indexoutofbounds if not handled
                                         for (int i = 0; i < multiplier; i++) {
                                             temporaryBasket.add(itemsFromDB.get(itemIndex));
                                         }
@@ -202,7 +186,6 @@ public class mainrunnable {
                                         checkOut2 = Integer.parseInt(secretScanner.nextLine());
 
                                         if (checkOut2 == 1) {
-                                            // TODO i think u forgotten to add the date in the UI, preorder collection date cant be today
                                             System.out.println();
                                             System.out.println("Enter a date collection for your pre-order. (dd/MM/yyy) eg. 08/08/2021");
                                             String scollectionDate;
@@ -251,7 +234,6 @@ public class mainrunnable {
                                             System.out.println("Cake ID not found! Please try again.");
                                         }
                                     } while (cakeIndex < 1 || cakeIndex > 3);
-                                    // TODO check if cake actually exists
                                     cake currentOrder = new cake(
                                             cakeFromDB.get(cakeIndex).getName(),
                                             cakeFromDB.get(cakeIndex).getPrice()
@@ -282,7 +264,6 @@ public class mainrunnable {
                                             System.out.println("Continuing to checkout.");
                                             ArrayList<cake> cakeOrder = new ArrayList<>();
                                             cakeOrder.add(currentOrder);
-                                            // TODO date cannot be today
                                             System.out.println();
                                             System.out.println("Enter a date collection for your pre-order. (dd/MM/yyy) eg. 08/08/2021");
                                             String scollectionDate;
@@ -349,7 +330,6 @@ public class mainrunnable {
                                 System.out.println("3. Amount of items");
                                 System.out.println("4. Order price");
                                 sortChoice = Integer.parseInt(secretScanner.nextLine());
-                                // TODO UI
                                 if (sortChoice == 1) {
                                     ArrayList<orders> sorted = mainInterface.getThisCustomerOrder(phoneNum, sort.DATE);
                                     showAllOrders(sorted);
