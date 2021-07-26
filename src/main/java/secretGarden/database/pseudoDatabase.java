@@ -61,14 +61,26 @@ public class pseudoDatabase implements databaseInterface {
         return allBreads;
     }
 
+    /**
+     * Set all the breads in the database
+     * @param allBreads The list of breads
+     */
     public static void setAllBreads(ArrayList<bread> allBreads) {
         pseudoDatabase.allBreads = allBreads;
     }
 
+    /**
+     * Get all the cakes from the database
+     * @return arraylist of cakes
+     */
     public static ArrayList<cake> getAllCakes() {
         return allCakes;
     }
 
+    /**
+     * Set all the cakes in the database
+     * @param allCakes The list of cakes
+     */
     public static void setAllCakes(ArrayList<cake> allCakes) {
         pseudoDatabase.allCakes = allCakes;
     }
