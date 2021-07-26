@@ -3,6 +3,9 @@ package secretGarden.interfaces;
 import secretGarden.customer;
 import secretGarden.orders;
 
+/**
+ * Interface for database class
+ */
 public interface databaseInterface {
     /**
      * Adds a new order to the end of the list

@@ -56,13 +56,18 @@ public class pseudoDatabase implements databaseInterface {
         return allCustomers;
     }
 
-    // Getters and Setters
+    /**
+     * Gets all the breads from the database
+     *
+     * @return A list of breads
+     */
     public static ArrayList<bread> getAllBreads() {
         return allBreads;
     }
 
     /**
      * Set all the breads in the database
+     *
      * @param allBreads The list of breads
      */
     public static void setAllBreads(ArrayList<bread> allBreads) {
@@ -71,6 +76,7 @@ public class pseudoDatabase implements databaseInterface {
 
     /**
      * Get all the cakes from the database
+     *
      * @return arraylist of cakes
      */
     public static ArrayList<cake> getAllCakes() {
@@ -79,6 +85,7 @@ public class pseudoDatabase implements databaseInterface {
 
     /**
      * Set all the cakes in the database
+     *
      * @param allCakes The list of cakes
      */
     public static void setAllCakes(ArrayList<cake> allCakes) {

@@ -159,7 +159,7 @@ public class mainrunnable {
                                         System.out.println("These are the breads that are available in our bakery.");
                                         System.out.println("");
                                         do {
-                                            for (int i = 0; i < itemsFromDB.size(); i++) {
+                                            for (int i = 1; i < itemsFromDB.size(); i++) {
                                                 System.out.println("#ID " + i);
                                                 System.out.println("Bread: " + itemsFromDB.get(i).getName());
                                                 System.out.println("Price: " + itemsFromDB.get(i).getPrice());
@@ -235,7 +235,7 @@ public class mainrunnable {
                                     System.out.println("These are the cakes available currently.");
                                     System.out.println("");
                                     do {
-                                        for (int i = 0; i < cakeFromDB.size(); i++) {
+                                        for (int i = 1; i < cakeFromDB.size(); i++) {
                                             System.out.println("#ID " + i);
                                             System.out.println("Cake:" + cakeFromDB.get(i).getName());
                                             System.out.println("Price: RM " + cakeFromDB.get(i).getPrice());

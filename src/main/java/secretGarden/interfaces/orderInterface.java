@@ -1,5 +1,8 @@
 package secretGarden.interfaces;
 
+/**
+ * Interface for order class
+ */
 public interface orderInterface {
     /**
      * Get total item count
