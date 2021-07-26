@@ -279,10 +279,12 @@ public class mainrunnable {
                                             System.out.println();
                                             System.out.println("Total Price: RM " + priceAfterTax);
                                             System.out.println("Order ID: " + orderID);
+                                            System.out.println("Design: " + customDesign);
+                                            System.out.println("Candles: " + customCandles);
                                             System.out.println("Collection Date: " + actualOrderDate);
                                         }
 
-                                        if (addon == 2) {
+                                        else if (addon == 2) {
                                             System.out.println();
                                             System.out.println("Continuing to checkout.");
                                             ArrayList<cake> cakeOrder = new ArrayList<>();
