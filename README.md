@@ -23,6 +23,7 @@ The Instructions for specific OS are listed below.
 
 Open up a Powershell window at the current directory and run the following command.
 
+To open up a powershell window, shift + right click on any empty space inside of windows explorer and press "Open Powershell window here"
 ```shell
 .\gradlew.bat run
 ```
