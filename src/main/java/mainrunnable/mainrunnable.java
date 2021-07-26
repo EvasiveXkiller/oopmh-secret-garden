@@ -76,11 +76,14 @@ public class mainrunnable {
                                 ArrayList<bread> temporaryBasket = new ArrayList<>();
                                 ArrayList<bread> itemsFromDB = mainInterface.getAllStandardItems();
                                 int checkOut;
+                                int itemIndex;
                                 do {
+                                    
                                 	System.out.println("");
                                     System.out.println("These are the breads avaliable in our bakery.");
                                     System.out.println("");
-                                    for (int i = 0; i < itemsFromDB.size(); i++) {
+                                    do {
+                                    for (int i = 1; i < itemsFromDB.size(); i++) {
                                         //TODO Jun id added ,probably better formatting
                                         System.out.println("#ID " + i);
                                         System.out.println("Bread: " + itemsFromDB.get(i).getName());
@@ -88,7 +91,15 @@ public class mainrunnable {
                                         System.out.println("");
                                     }
                                     System.out.println("You can add these items to the cart. (Please insert the ID)");
-                                    int itemIndex = Integer.parseInt(secretScanner.nextLine());
+                                    
+                                    
+                                    
+                                itemIndex = Integer.parseInt(secretScanner.nextLine());
+                                     if (itemIndex < 1 || itemIndex > 5){
+                                         System.out.println("Bread ID not found! Please try again.");
+                                     }
+                                    } while(itemIndex < 1 || itemIndex > 5);
+                                    
                                     // TODO check if the bread id actually exist, might product indexoutofbounds if not handled
                                     System.out.println("");
                                     System.out.println("Enter the amount that u want."); //TODO replace "this item" with more descriptive text
@@ -133,6 +144,7 @@ public class mainrunnable {
                                     }
                                 } while (checkOut != 1);
                             } else if (choice2 == 2) {
+                                int itemIndex;
                                 System.out.println("You have chosen pre-order. " +
                                         "Are you interested in our selection of cakes or breads? " +
                                         "1 for Bread, " +
@@ -142,10 +154,12 @@ public class mainrunnable {
                                     ArrayList<bread> temporaryBasket = new ArrayList<>();
                                     ArrayList<bread> itemsFromDB = mainInterface.getAllStandardItems();
                                     int checkOut2;
+                                    
                                     do {
                                     	System.out.println("");
                                         System.out.println("These are the breads that are available in our bakery.");
                                         System.out.println("");
+                                        do {
                                         for (int i = 0; i < itemsFromDB.size(); i++) {
                                             System.out.println("#ID " + i);
                                             System.out.println("Bread: " + itemsFromDB.get(i).getName());
@@ -153,10 +167,15 @@ public class mainrunnable {
                                             System.out.println("");
                                         }
                                         System.out.println("You can add these items to the cart. (Please insert the ID)");
-                                        int itemIndex = Integer.parseInt(secretScanner.nextLine());
+                                        itemIndex = Integer.parseInt(secretScanner.nextLine());
+                                        if (itemIndex < 1 || itemIndex > 5){
+                                            System.out.println("Bread ID not found! Please try again.");
+                                        }
+                                       } while(itemIndex < 1 || itemIndex > 5);
                                         System.out.println("");
                                         System.out.println("Enter the amount that u want.");
                                         int multiplier = Integer.parseInt(secretScanner.nextLine());
+                                        
 
                                         // TODO check if the bread id actually exist, might product indexoutofbounds if not handled
                                         for (int i = 0; i < multiplier; i++) {
@@ -212,9 +231,11 @@ public class mainrunnable {
                                 }
 
                                 if (preorder == 2) {
+                                    int cakeIndex;
                                     ArrayList<cake> cakeFromDB = mainInterface.getAllCakesItems();
                                     System.out.println("These are the cakes available currently.");
                                     System.out.println("");
+                                    do {
                                     for (int i = 0; i < cakeFromDB.size(); i++) {
                                         System.out.println("#ID " + i);
                                         System.out.println("Cake:" + cakeFromDB.get(i).getName());
@@ -223,7 +244,11 @@ public class mainrunnable {
                                     }
                                     System.out.println("");
                                     System.out.println("Which cake are you interested in? (Please insert the ID)");
-                                    int cakeIndex = Integer.parseInt(secretScanner.nextLine());
+                                    cakeIndex = Integer.parseInt(secretScanner.nextLine());
+                                    if (cakeIndex < 1 || cakeIndex > 3){
+                                        System.out.println("Cake ID not found! Please try again.");
+                                    }
+                                } while(cakeIndex < 1 || cakeIndex > 3);
                                     // TODO check if cake actually exists
                                     cake currentOrder = new cake(
                                             cakeFromDB.get(cakeIndex).getName(),

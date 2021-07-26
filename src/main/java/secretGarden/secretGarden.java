@@ -193,13 +193,14 @@ public class secretGarden implements webInterface {
     public void generateFillData() {
         ArrayList<cake> tempAllCake = new ArrayList<>();
         ArrayList<bread> tempAllBread = new ArrayList<>();
-        
+        tempAllBread.add(new bread("placeholder", 0));
         tempAllBread.add(new bread("Ciabatta Bread", 15));
         tempAllBread.add(new bread("Banana Bread", 7.5));
         tempAllBread.add(new bread("Baguette Bread", 18));
         tempAllBread.add(new bread("Wheat Bread", 12));
         tempAllBread.add(new bread("Hot-Dog Bread", 8.5));
-            
+        
+        tempAllCake.add(new cake("placeholder", 77));
         tempAllCake.add(new cake("VANILLA", 77));
         tempAllCake.add(new cake("TIRAMISU", 770));
         tempAllCake.add(new cake("CHOCOLATE", 7700));
