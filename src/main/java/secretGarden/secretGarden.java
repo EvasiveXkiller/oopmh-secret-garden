@@ -187,8 +187,6 @@ public class secretGarden implements webInterface {
 
     /**
      * TEST DATA ONLY
-     *
-     * @param amountOfItemsToGenerate The amount of test data to insert into the database
      */
     public void generateFillData() {
         ArrayList<cake> tempAllCake = new ArrayList<>();
