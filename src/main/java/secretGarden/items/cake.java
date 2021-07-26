@@ -31,7 +31,7 @@ public class cake extends itemBase {
 
     /**
      * Set name of cake
-     * @param name The name of bread
+     * @param name The name of cake
      */
     public void setName(String name) {
         this.name = name;
