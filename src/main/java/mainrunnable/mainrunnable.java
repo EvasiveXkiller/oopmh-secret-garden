@@ -243,7 +243,6 @@ public class mainrunnable {
                                     do {
                                         System.out.println();
                                         System.out.println("Are you interested in our add-on services (custom design & custom candles)?");
-                                        System.out.println();
                                         System.out.println("1. YES");
                                         System.out.println("2. NO");
                                         addon = Integer.parseInt(secretScanner.nextLine());
@@ -257,6 +256,30 @@ public class mainrunnable {
                                             System.out.println("Please describe the candle of the cake. (Number of candles, shape, colour, etc.)");
                                             String customCandles = secretScanner.nextLine();
                                             currentOrder.setCustomCandles(customCandles);
+
+                                            System.out.println();
+                                            System.out.println("Continuing to checkout.");
+                                            ArrayList<cake> cakeOrder = new ArrayList<>();
+                                            cakeOrder.add(currentOrder);
+                                            System.out.println();
+                                            System.out.println("Enter a date collection for your pre-order. (dd/MM/yyy) eg. 08/08/2021");
+                                            String scollectionDate;
+                                            scollectionDate = secretScanner.nextLine();
+                                            LocalDateTime actualOrderDate = stringDateToLocalDateTime(scollectionDate);
+                                            String orderID = mainInterface.placeOrders(
+                                                    mainInterface.getCustomer(phoneNum),
+                                                    actualOrderDate,
+                                                    null,
+                                                    cakeOrder
+                                            );
+                                            orders CurOrder = mainInterface.getThisCustomerOrderSingle(orderID);
+                                            double priceAfterTax = utils.calculateTax(0.06, CurOrder.getTotalPrice());
+                                            System.out.println();
+                                            System.out.println("Your order is successfully placed! Thank you for shopping at Secret Garden!");
+                                            System.out.println();
+                                            System.out.println("Total Price: RM " + priceAfterTax);
+                                            System.out.println("Order ID: " + orderID);
+                                            System.out.println("Collection Date: " + actualOrderDate);
                                         }
 
                                         if (addon == 2) {
