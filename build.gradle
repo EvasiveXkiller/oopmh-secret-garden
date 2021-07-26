@@ -3,8 +3,8 @@ plugins {
     id 'application'
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+group 'org.xampp'
+version '1.0-PRODUCTION'
 
 repositories {
     mavenCentral()
