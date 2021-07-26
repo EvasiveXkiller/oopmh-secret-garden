@@ -10,6 +10,9 @@ import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+/**
+ * General utility class to calculate stuff
+ */
 public class utils {
     /**
      * Calculates the tax price
@@ -101,15 +104,14 @@ public class utils {
      * Converts the date from string to LocalDateTime
      * @param stringDate The date in String data type
      * @return The date in LocalDateTime
-     * @throws DateTimeParseException
+     * @throws DateTimeParseException Exception when date is not in the correct format or not valid
      */
     public static LocalDateTime stringDateToLocalDateTime(String stringDate) throws DateTimeParseException {
         String date = stringDate.replace("-", "/");
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
         dateTimeFormatter = dateTimeFormatter.withResolverStyle(ResolverStyle.STRICT);
         LocalDate unparsedTime = LocalDate.parse(date, dateTimeFormatter);
-        LocalDateTime convertedDate = unparsedTime.atStartOfDay();
-        return convertedDate;
+        return unparsedTime.atStartOfDay();
     }
 }
 

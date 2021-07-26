@@ -9,6 +9,11 @@ public class cake extends itemBase {
     private String customDesign;
     private String customCandles;
 
+    /**
+     * Constructor for cake class
+     * @param name The name of the cake
+     * @param price The price of the cake
+     */
     public cake(String name, double price) {
         this.name = name;
         this.price = price;

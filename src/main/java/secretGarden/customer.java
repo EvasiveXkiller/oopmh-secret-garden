@@ -16,7 +16,7 @@ public class customer implements customerInterface {
 /**
  * Constructor for customer
  * 
- * @param cuetomerID    The ID given to the customer
+ * @param customerID    The ID given to the customer
  * @param customerName  The name inputted by the customer
  * @param memberStatus  Refer to the membership status in enums 
  * 
@@ -60,7 +60,7 @@ public class customer implements customerInterface {
     }
     /**
      * Sets the ID of a customer
-     * @param customerID
+     * @param customerID The ID of the customer
      * 
      */
     public void setCustomerID(String customerID) {
@@ -75,7 +75,7 @@ public class customer implements customerInterface {
     }
     /**
      * Sets the name of the customer
-     * @param customerName
+     * @param customerName The name of the customer
      */
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
@@ -89,7 +89,7 @@ public class customer implements customerInterface {
     }
     /**
      * Sets the membership status of the member
-     * @param memberStatus
+     * @param memberStatus The membership status of the customer
      */
     public void setMemberStatus(membership memberStatus) {
         this.memberStatus = memberStatus;
