@@ -320,6 +320,7 @@ public class mainrunnable {
 
                         if (show == 1) {
                             String OrderID;
+                            ArrayList<bread> temporaryBasket = new ArrayList<>();
                             System.out.println();
                             System.out.println("Please enter the order ID of the order that you want to check.");
                             OrderID = secretScanner.nextLine();
@@ -327,9 +328,17 @@ public class mainrunnable {
                             if (single == null) {
                                 System.out.println("");
                                 System.out.println("Order Not Found!");
+                                
                             } else {
-                                System.out.println("");
-                                System.out.println(single);
+                            	int multiplier = Integer.parseInt(secretScanner.nextLine());
+                            	double temporaryPrice = 0;
+                            	for (int i = 0; i < multiplier; i++) {
+                            		System.out.println(temporaryBasket.get(i).getName());
+                            		System.out.println("RM " + temporaryBasket.get(i).getPrice());
+                            		System.out.println("");
+                            		temporaryPrice += temporaryBasket.get(i).getPrice();
+                            	}
+                            	System.out.println("Total " + temporaryPrice);
                             }
                         }
 
@@ -349,8 +358,12 @@ public class mainrunnable {
                                 if (sortChoice == 1) {
                                     ArrayList<orders> sorted = mainInterface.getThisCustomerOrder(phoneNum, sort.DATE);
                                     for (orders orderList : sorted) {
+                                    	for (int i = 0; i < sortChoice; i++) {
                                         System.out.println(orderList);
                                     }
+                                    	System.out.println();
+                                    }
+                                    	
                                 } else if (sortChoice == 2) {
                                     ArrayList<orders> sorted = mainInterface.getThisCustomerOrder(phoneNum, sort.TYPE);
                                     for (orders orderList : sorted) {
