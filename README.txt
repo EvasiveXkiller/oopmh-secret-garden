@@ -13,6 +13,12 @@ The Java files are located here:
 /src/main/java
 ```
 
+Interactive documentation is in
+
+```shell
+/javadoc/index.html
+```
+
 The Instructions for specific OS are listed below.
 
 ### Windows
