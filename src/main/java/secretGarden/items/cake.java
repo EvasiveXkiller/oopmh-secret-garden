@@ -16,35 +16,66 @@ public class cake extends itemBase {
         this.customCandles = "";
     }
 
-    // Getters and setters
+    /**
+     * Gets the name of cake
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Set name of cake
+     * @return
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Get price of cake
+     * @return
+     */
     public double getPrice() {
         return price;
     }
 
+    /**
+     * Set price of cake
+     * @return
+     */
     public void setPrice(double price) {
         this.price = price;
     }
 
+    /**
+     * Get custom design of cake
+     * @return
+     */
     public String getCustomDesign() {
         return customDesign;
     }
 
+    /**
+     * Set custom design of cake
+     * @param customDesign
+     */
     public void setCustomDesign(String customDesign) {
         this.customDesign = customDesign;
     }
 
+    /**
+     * Get custom candles of cake
+     * @return
+     */
     public String getCustomCandles() {
         return customCandles;
     }
 
+    /**
+     * Set custom candles of cake
+     * @param customCandles
+     */
     public void setCustomCandles(String customCandles) {
         this.customCandles = customCandles;
     }

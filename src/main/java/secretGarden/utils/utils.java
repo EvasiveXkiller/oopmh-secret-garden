@@ -21,9 +21,9 @@ public class utils {
     public static double calculateTax(double rate, double beforeTaxPrice) {
         return (rate * beforeTaxPrice) + beforeTaxPrice;
     }
-    // TODO write comments
 
     /**
+     * Sort order by date
      * @param orders
      * @return
      */
@@ -65,22 +65,44 @@ public class utils {
         return orders;
     }
 
+    /**
+     * Sort order by items alphabetically
+     * 
+     * @param orders
+     * @return
+     */
     public static ArrayList<orders> sortOrderByItems(ArrayList<orders> orders) {
         orders.sort(Comparator.comparingInt(secretGarden.orders::getItemCount));
         return orders;
     }
 
+    /**
+     * Sort order by items in alphabetical order
+     * 
+     * @param orders
+     * @return
+     */
     public static ArrayList<orders> sortOrderByPrice(ArrayList<orders> orders) {
         orders.sort(Comparator.comparingDouble(secretGarden.orders::getTotalPrice));
         return orders;
     }
 
+    /**
+     * Sort order by order types
+     * @param orders
+     * @return
+     */
     public static ArrayList<orders> sortOrderByType(ArrayList<orders> orders) {
         orders.sort(Comparator.comparing(secretGarden.orders::getOrderType));
         return orders;
     }
 
-
+    /**
+     * covert string to LocalDateTime
+     * @param stringDate
+     * @return
+     * @throws DateTimeParseException
+     */
     public static LocalDateTime stringDateToLocalDateTime(String stringDate) throws DateTimeParseException {
         String date = stringDate.replace("-", "/");
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
@@ -89,7 +111,6 @@ public class utils {
         LocalDateTime convertedDate = unparsedTime.atStartOfDay();
         return convertedDate;
     }
-
 }
 
 
